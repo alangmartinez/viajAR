@@ -1,3 +1,17 @@
+
+// Evento para mostrar y ocultar menu mobile al hacer "click";
+
+let btnMenu = document.getElementById("btnMenu");
+let menu = document.getElementById("menu");
+let body = document.getElementById("body");
+
+btnMenu.addEventListener("click", function(){
+    
+    menu.classList.toggle("mostrar");
+    body.classList.toggle("noScroll");
+    
+});
+
 // Evento para mostrar img al hacer "scroll";
 
 window.addEventListener("scroll", function(){
@@ -19,15 +33,3 @@ window.addEventListener("scroll", function(){
         }
 
 });
-
-// Evento para mostrar y ocultar menu mobile al hacer "click";
-
-let btnMenu = document.getElementById("btnMenu");
-let menu = document.getElementById("menu");
-
-btnMenu.addEventListener("click", function(){
-
-    menu.classList.toggle("mostrar");
-
-});
-
