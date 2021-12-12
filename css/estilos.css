@@ -20,7 +20,6 @@ p{
     padding: 1rem;
 }
 header{
-    top: 0;
     height: 3rem;
 }
 .container-btnMenu{
@@ -30,12 +29,20 @@ header{
     justify-content: flex-end;
     align-items: center;
     padding: 1rem;
+    position: relative;
+    z-index: 1000;
 }
 .fa-bars{
     color: #fff;
     font-size: 1.4rem;
     margin-right: .5rem;
     cursor: pointer;
+}
+.fa-home{
+    display: none;
+}
+.fa-id-badge{
+    display: none;
 }
 nav{
     position: fixed;
@@ -60,8 +67,10 @@ nav{
     height: 100vh;
     opacity: 0;
     transform: translateX(100%);
-    transition: all .7s;
-    z-index: 1000;
+    transition: all .5s;
+    z-index: 500;
+    padding: 0;
+    margin-top: -3rem;
 }
 .menu li{
     display: block;
@@ -83,6 +92,9 @@ nav{
     transform: translateX(0);
     opacity: 1;
 }
+
+/* Clase para evitar scroll al abrir el menu desplegable de mobile */
+
 .noScroll{
     overflow: hidden;
 }
@@ -129,6 +141,7 @@ section{
     padding: 0 1rem;
     box-sizing: border-box;
     cursor: pointer;
+    background-color: transparent;
 }
 .btn-lg a{
     color: #000;
@@ -158,25 +171,60 @@ section{
 
 
 @media screen and (min-width: 1024px) {
+    nav{
+        position: unset;
+        background-color: unset;
+    }
     .container-btnMenu{
-        display: none;
+        justify-content: start;
+        background-color: #000;
+        position: fixed;
+        top: 0;
+        height: 3rem;
+        width: 100vw;
+        margin-left: -1rem;
+    }
+    .fa-bars{
+        padding: 0;
+        margin: 0;
     }
     .container-menu{
-        flex-direction: row;
-        background: #000;
-        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 3.8rem;
+        height: 100vh;
+        flex-direction: column;
     }
     .menu{
         opacity: 1;
         transform: translateX(0);
+        width: 100%;
         height: 100%;
-        flex-direction: row;
+        flex-direction: column;
         padding: 0;
         margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    body{
+        margin-top: 3rem;
+        margin-left: 3.8rem;
+        padding: 1rem;
     }
     .menu li{
         padding: .5rem 1.5rem;
+        margin-left: 3rem;
         box-sizing: border-box;
+        display: flex;
+        align-items: center;
+    }
+    .fa-home{
+        font-size: 2rem;
+    }
+    .fa-id-badge{
+        font-size: 2rem;
     }
     .cards-container{
         flex-direction: row;
