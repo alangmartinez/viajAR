@@ -1,0 +1,176 @@
+@import "_variables";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fjalla One', sans-serif;
+    scroll-behavior: smooth;
+}
+body{
+    background-image: url(../assets/img/fondo/fondo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow-x: hidden;
+}
+.menu-btn{
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: .5rem;
+    cursor: pointer;
+    z-index: 200;
+
+    .fa-bars{
+        color: $color-black;
+        width: 100%;
+        height: 100%;
+        font-size: 1.7rem;
+        padding: 10px;
+    }
+    .fa-times{
+        color: $color-white;
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+        padding: 10px;
+    }
+}
+.list{
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    height: 100vh;
+    width: 100%;
+    gap: 2.5rem;
+    letter-spacing: 2px;
+    background-color: $color-black;
+    z-index: 100;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 300px 0 0 300px;
+    box-shadow: $shadow-1;
+    transition: ease-in-out all 450ms;
+    
+    .link{
+        text-decoration: none;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover .list__item{
+            color: #444;
+        }
+        &:hover .icons{
+            color: #444;
+        }
+
+        .icons{
+            color: $color-white;
+            font-size: 26px;
+            height: 31px;
+        }
+    }
+    &__item{
+        text-transform: uppercase;
+        color: $color-white;
+        font-size: 24px;
+        margin: 0;
+        margin-left: 14px;
+        padding: 0;
+        vertical-align: bottom;
+    }
+}
+.title{
+    color: $color-white;
+    text-align: center;
+    margin-top: 70px;
+    font-size: 60px;
+    text-shadow: 2px 4px 5px #000000;
+    transform: translateX(-100%);
+    opacity: 1;
+    transition: ease-in-out all 1300ms;
+
+    &::after{
+        content: "AR.";
+        color: rgb(200, 11, 43);
+        font-size: 60px;
+        text-shadow: $txt-shadow;
+    }
+}
+.carousel-container{
+    padding: 1.5rem;
+    max-height: 650px;
+    max-width: 450px;
+
+    .carousel-inner{
+        border-radius: 10px;
+        box-shadow: $shadow-1;
+        position: relative;
+        
+        .img-title{
+            color: $color-white;
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: $txt-shadow;
+            word-wrap: normal;
+        }
+        .havana{
+            color: $color-white;
+        }
+        .rio-janeiro::after{
+            content: " Janeiro";
+            text-transform: uppercase;
+            color: green;
+            letter-spacing: 2px;
+        }
+        .buenos-aires::after{
+            content: " Aires";
+            text-transform: uppercase;
+            color: yellow;
+            letter-spacing: 2px;
+        }
+    }
+}
+.img-fluid{
+    height: 100%;
+    object-fit: cover;
+}
+
+footer{
+    width: 100%;
+    p{
+        text-align: center;
+        color: $color-white;
+        font-family: sans-serif;
+        font-size: 13px;
+        text-shadow: $txt-shadow;
+        &::after{
+            content: " Alan Martinez.";
+            color: $color-white;
+        }
+    }
+}
+.carousel{
+    opacity: 0;
+    transition: ease all 2s;
+}
+.visible{
+    transform: translate(0);
+    opacity: 1;
+    visibility: visible;
+}
