@@ -61,3 +61,48 @@ const financiacion = (precioViaje)=>{
         alert("Te esperamos pronto.")
     }
 }
+
+// Validacion de datos
+
+const nombre = document.querySelector(".name");
+const email = document.querySelector(".email");
+const boton = document.querySelector(".submit-btn");
+
+boton.addEventListener("click",(e)=>{
+    e.preventDefault();
+    let error = validarDatos();
+    if(error[0]){
+        document.querySelector(".respuesta").innerHTML = error[1];
+        document.querySelector(".respuesta").classList.add("red");
+        document.querySelector(".respuesta").classList.remove("green");
+    }
+    else{
+        document.querySelector(".respuesta").innerHTML = "Solicitud enviada correctamente.";
+        document.querySelector(".respuesta").classList.add("green");
+        document.querySelector(".respuesta").classList.remove("red");
+    }
+})
+
+const validarDatos = ()=>{
+    let error = [];
+    if(nombre.value.length < 4){
+        error[0] = true;
+        error[1] = "Nombre debe tener más de 4 caracteres.";
+        return error;
+    }
+    else if(nombre.value.length > 15){
+        error[0] = true;
+        error[1] = "Nombre debe tener menos de 15 caracteres.";
+        return error;
+    }
+    else if(email.value.length < 4 ||
+        email.value.length > 30 ||
+        email.value.indexOf("@") == -1 ||
+        email.value.indexOf(".") == -1){
+            error[0] = true;
+            error[1] = "El email ingresado es invalido."
+            return error;
+        }
+    error[0] = false;
+    return error;
+}
