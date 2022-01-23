@@ -56,7 +56,7 @@ body{
     transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
-    border-radius: 300px 0 0 300px;
+    border-radius: 230px 0 0 230px;
     box-shadow: $shadow-1;
     transition: ease-in-out all 450ms;
     
@@ -164,6 +164,7 @@ body{
 .img-fluid{
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
 }
 .help{
     padding: 1.5rem;
@@ -184,6 +185,7 @@ body{
             outline: none;
             border: none;
             border-bottom: 1px solid #000;
+            border-radius: none;
             padding: 10px;
             padding-bottom: 5px;
             padding-left: 5px;
