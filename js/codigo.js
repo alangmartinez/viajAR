@@ -38,26 +38,26 @@ const financiacion = (precioViaje)=>{
             switch(cuotas){
                 case 3:
                     valorCuota = precioViaje / cuotas;
-                    swal(`El monto abonar es de $${valorCuota}`);
+                    alert(`El monto abonar es de $${valorCuota}`);
                     break;
                 case 6:
                     valorCuota = precioViaje / cuotas;
-                    swal(`El monto abonar es de $${valorCuota}`);
+                    alert(`El monto abonar es de $${valorCuota}`);
                     break;
                 case 9:
                     valorCuota = precioViaje / cuotas;
-                    swal(`El monto abonar es de ${valorCuota}`);
+                    alert(`El monto abonar es de ${valorCuota}`);
                     break;
                 case 12:
                     valorCuota = precioViaje / cuotas;
-                    swal(`El monto abonar es de $${valorCuota}`);
+                    alert(`El monto abonar es de $${valorCuota}`);
                     break;
                 default:
-                swal(`El monto abonnar es de $${precioViaje}`);
+                alert(`El monto abonnar es de $${precioViaje}`);
                 break;
             }
     }
     else{
-        swal("Te esperamos pronto.")
+        alert("Te esperamos pronto.")
     }
 }
