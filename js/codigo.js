@@ -32,31 +32,38 @@ const financiacion = (precioViaje)=>{
     const  confirmacion = confirm(`¿Deseas comenzar a financiar tu viaje?`);
 
     if(confirmacion){
-        let valorCuota = 0;
-        let cuotas = parseInt(prompt("¿ En cuantas cuotas deseas abonar tu viaje ?"));
-            // Dependiendo el numero de cuotas elegidas se realiza el respectivo calculo.
-            switch(cuotas){
-                case 3:
-                    valorCuota = precioViaje / cuotas;
-                    alert(`El monto abonar es de $${valorCuota}`);
-                    break;
-                case 6:
-                    valorCuota = precioViaje / cuotas;
-                    alert(`El monto abonar es de $${valorCuota}`);
-                    break;
-                case 9:
-                    valorCuota = precioViaje / cuotas;
-                    alert(`El monto abonar es de ${valorCuota}`);
-                    break;
-                case 12:
-                    valorCuota = precioViaje / cuotas;
-                    alert(`El monto abonar es de $${valorCuota}`);
-                    break;
-                default:
-                alert(`El monto abonnar es de $${precioViaje}`);
-                break;
+        let cuotas = parseInt(prompt(`¿En cuantas cuotas deseas abonar tu viaje?
+        - 1 cuota (sin interes).
+        - 3 cuotas (5% de interes).
+        - 6 cuotas (12% de interes).
+        - 9 cuotas (15% de interes).
+        - 12 cuotas (21% de interes).`));
+        // Dependiendo el numero de cuotas elegidas se realiza el respectivo calculo.
+            if(cuotas == 1 || cuotas == 3 || cuotas == 6 || cuotas == 9 || cuotas == 12){
+                let interes = 0;
+                switch(cuotas){
+                    case 3:
+                        interes = 1.05;
+                        break;
+                    case 6: 
+                        interes = 1.12;
+                        break;
+                    case 9:
+                        interes = 1.15;
+                        break;
+                    case 12:
+                        interes = 1.21;
+                        break;
+                    default:
+                        break;
+                }
+                let valorCuota = parseInt((precioViaje * interes) / cuotas);
+                alert(`El monto abonar en cada cuota es de $ ${valorCuota}`);
             }
-    }
+            else{
+                alert("El valor ingresado no es valido.")
+            }
+        }
     else{
         alert("Te esperamos pronto.")
     }
@@ -67,6 +74,7 @@ const financiacion = (precioViaje)=>{
 const nombre = document.querySelector(".name");
 const email = document.querySelector(".email");
 const boton = document.querySelector(".submit-btn");
+const surname = document.querySelector(".surname");
 
 boton.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -85,24 +93,50 @@ boton.addEventListener("click",(e)=>{
 
 const validarDatos = ()=>{
     let error = [];
-    if(nombre.value.length < 4){
+    if(nombre.value.length <= 3){
         error[0] = true;
-        error[1] = "Nombre debe tener más de 4 caracteres.";
+        error[1] = "El nombre debe tener al menos 4 caracteres.";
         return error;
     }
-    else if(nombre.value.length > 15){
+    else if(nombre.value.length > 10){
         error[0] = true;
-        error[1] = "Nombre debe tener menos de 15 caracteres.";
+        error[1] = "El nombre debe tener menos de 10 caracteres.";
         return error;
+    }
+    else if(surname.value.length <= 3){
+        error[0] = true;
+        error[1] = "El apellido debe tener al menos 4 caracteres."
+    }
+    else if(surname.value.length > 10){
+        error[0] = true;
+        error[1] = "El apellido debe tener menos de 10 caracteres."
     }
     else if(email.value.length < 4 ||
         email.value.length > 30 ||
         email.value.indexOf("@") == -1 ||
         email.value.indexOf(".") == -1){
             error[0] = true;
-            error[1] = "El email ingresado es invalido."
+            error[1] = "El email ingresado no es valido."
             return error;
         }
     error[0] = false;
     return error;
 }
+
+class Viaje{
+    constructor(destino, cuotas, precio){
+        this.destino = destino,
+        this.cuotas = cuotas,
+        this.precio = precio
+    }
+}
+
+let viajes = [];
+
+viajes.push(new Viaje("Rio de Janeiro", 3, 105000));
+viajes.push(new Viaje("Buenos Aires", 6, 75000));
+
+for(const viaje of viajes){
+    console.log(viaje);
+}
+
