@@ -12,6 +12,7 @@ body{
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    background-repeat: no-repeat;
     overflow-x: hidden;
 }
 .menu-btn{
@@ -107,104 +108,122 @@ body{
         text-shadow: $txt-shadow;
     }
 }
-.carousel-container{
-    padding: 1.5rem;
-    max-height: 650px;
-    max-width: 450px;
+.main-container{
+    display: flex;
+    flex-direction: column;
 
-    .carousel-inner{
-        border-radius: 10px;
-        box-shadow: $shadow-1;
-        position: relative;
-        
-        .info{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 65%;
-
-            hr{
-                background-color: $color-white;
-                opacity: 1;
+    @media screen and (min-width: 780px){
+        flex-direction: row;
+        height: auto;
+    }
+    .carousel-container{
+        padding: 1.5rem;
+        max-height: 650px;
+        max-width: 450px;
+    
+        .carousel-inner{
+            border-radius: 10px;
+            box-shadow: $shadow-1;
+            position: relative;
+            
+            .info{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 65%;
+    
+                hr{
+                    background-color: $color-white;
+                    opacity: 1;
+                }
+                .img-title{
+                    color: $color-white;
+                    font-size: 24px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    text-shadow: $txt-shadow;
+                    word-wrap: normal;
+                }
+                .price{
+                    color: $color-white;
+                    text-shadow: $txt-shadow;
+                    text-align: center;
+                    font-size: 20px;
+                }
             }
-            .img-title{
+            .havana{
                 color: $color-white;
-                font-size: 24px;
-                text-align: center;
+            }
+            .rio-janeiro::after{
+                content: " Janeiro";
                 text-transform: uppercase;
+                color: green;
                 letter-spacing: 2px;
-                text-shadow: $txt-shadow;
-                word-wrap: normal;
             }
-            .price{
-                color: $color-white;
-                text-shadow: $txt-shadow;
-                text-align: center;
-                font-size: 20px;
+            .buenos-aires::after{
+                content: " Aires";
+                text-transform: uppercase;
+                color: yellow;
+                letter-spacing: 2px;
             }
-        }
-        .havana{
-            color: $color-white;
-        }
-        .rio-janeiro::after{
-            content: " Janeiro";
-            text-transform: uppercase;
-            color: green;
-            letter-spacing: 2px;
-        }
-        .buenos-aires::after{
-            content: " Aires";
-            text-transform: uppercase;
-            color: yellow;
-            letter-spacing: 2px;
         }
     }
-}
-.img-fluid{
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-.help{
-    padding: 1.5rem;
-    .form{
-        width: 100%;
-        padding: 2rem;
-        background-color: rgba($color: #fff, $alpha: .7);
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .img-fluid{
+        height: 100%;
+        object-fit: cover;
         border-radius: 10px;
-        box-shadow: $shadow-1;
-
-        .input{
-            background-color: transparent;
-            margin-bottom: 2rem;
-            outline: none;
-            border: none;
-            border-bottom: 1px solid #000;
-            border-radius: none;
-            padding: 10px;
-            padding-bottom: 5px;
-            padding-left: 5px;
-            font-family: 'Source Code Pro', monospace;
-            font-size: 14px;
-            color: #333;
-
-            &:focus{
-                border-color: #999;
-            }
-        }
-        .text-area{
-            resize: none;
-        }
-        .submit-btn{
-            width: 45%;
+    }
+    .help{
+        padding: 1.5rem;
+        height: 100%;
+        width: 100%;
+        .form{
+            width: 100%;
+            padding: 2rem;
+            background-color: rgba($color: #fff, $alpha: .9);
             margin: auto;
-            outline: none;
-            padding: 6px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: $shadow-1;
+    
+            .input{
+                background-color: transparent;
+                margin-bottom: 2rem;
+                outline: none;
+                border: none;
+                border-bottom: 1px solid #000;
+                border-radius: none;
+                padding: 10px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                font-family: 'Source Code Pro', monospace;
+                font-size: 14px;
+                color: #333;
+    
+                &::placeholder{
+                    color: #555;
+                }
+                &:focus{
+                    border-color: #999;
+                }
+            }
+            .text-area{
+                resize: none;
+    
+                &::placeholder{
+                    color: #111;
+                }
+            }
+            .submit-btn{
+                width: 45%;
+                margin: auto;
+                outline: none;
+                padding: 6px 0;
+            }
         }
     }
 }

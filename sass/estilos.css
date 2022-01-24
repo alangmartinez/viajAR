@@ -11,6 +11,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  background-repeat: no-repeat;
   overflow-x: hidden;
 }
 
@@ -106,28 +107,38 @@ body {
   text-shadow: 2px 4px 5px #000000;
 }
 
-.carousel-container {
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 780px) {
+  .main-container {
+    flex-direction: row;
+    height: auto;
+  }
+}
+.main-container .carousel-container {
   padding: 1.5rem;
   max-height: 650px;
   max-width: 450px;
 }
-.carousel-container .carousel-inner {
+.main-container .carousel-container .carousel-inner {
   border-radius: 10px;
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
   position: relative;
 }
-.carousel-container .carousel-inner .info {
+.main-container .carousel-container .carousel-inner .info {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 65%;
 }
-.carousel-container .carousel-inner .info hr {
+.main-container .carousel-container .carousel-inner .info hr {
   background-color: #fff;
   opacity: 1;
 }
-.carousel-container .carousel-inner .info .img-title {
+.main-container .carousel-container .carousel-inner .info .img-title {
   color: #fff;
   font-size: 24px;
   text-align: center;
@@ -136,42 +147,42 @@ body {
   text-shadow: 2px 4px 5px #000000;
   word-wrap: normal;
 }
-.carousel-container .carousel-inner .info .price {
+.main-container .carousel-container .carousel-inner .info .price {
   color: #fff;
   text-shadow: 2px 4px 5px #000000;
   text-align: center;
   font-size: 20px;
 }
-.carousel-container .carousel-inner .havana {
+.main-container .carousel-container .carousel-inner .havana {
   color: #fff;
 }
-.carousel-container .carousel-inner .rio-janeiro::after {
+.main-container .carousel-container .carousel-inner .rio-janeiro::after {
   content: " Janeiro";
   text-transform: uppercase;
   color: green;
   letter-spacing: 2px;
 }
-.carousel-container .carousel-inner .buenos-aires::after {
+.main-container .carousel-container .carousel-inner .buenos-aires::after {
   content: " Aires";
   text-transform: uppercase;
   color: yellow;
   letter-spacing: 2px;
 }
-
-.img-fluid {
+.main-container .img-fluid {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
 }
-
-.help {
+.main-container .help {
   padding: 1.5rem;
+  height: 100%;
+  width: 100%;
 }
-.help .form {
+.main-container .help .form {
   width: 100%;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.9);
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -179,7 +190,7 @@ body {
   border-radius: 10px;
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
 }
-.help .form .input {
+.main-container .help .form .input {
   background-color: transparent;
   margin-bottom: 2rem;
   outline: none;
@@ -193,13 +204,31 @@ body {
   font-size: 14px;
   color: #333;
 }
-.help .form .input:focus {
+.main-container .help .form .input::-moz-placeholder {
+  color: #555;
+}
+.main-container .help .form .input:-ms-input-placeholder {
+  color: #555;
+}
+.main-container .help .form .input::placeholder {
+  color: #555;
+}
+.main-container .help .form .input:focus {
   border-color: #999;
 }
-.help .form .text-area {
+.main-container .help .form .text-area {
   resize: none;
 }
-.help .form .submit-btn {
+.main-container .help .form .text-area::-moz-placeholder {
+  color: #111;
+}
+.main-container .help .form .text-area:-ms-input-placeholder {
+  color: #111;
+}
+.main-container .help .form .text-area::placeholder {
+  color: #111;
+}
+.main-container .help .form .submit-btn {
   width: 45%;
   margin: auto;
   outline: none;

@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">  
     <link rel="shortcut icon" href="assets/fav-ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="sass/normalize.css">
     <link rel="stylesheet" href="sass/estilos.css">
     <title>ViajAR</title>
 </head>
@@ -45,53 +46,56 @@
     <main>
         <h1 class="title">viaj</h1>
         
-        <div class="carousel-container">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" onclick="financiacion(105000)">
-                        <div class="info">
-                            <h2 class="img-title rio-janeiro">Rio de</h2>
-                            <hr>
-                            <p class="price">$105,000</p>
+        <section class="main-container">
+            <div class="carousel-container">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" onclick="financiacion(105000, `Rio de Janeiro`)">
+                            <div class="info">
+                                <h2 class="img-title rio-janeiro">Rio de</h2>
+                                <hr>
+                                <p class="price">$105,000</p>
+                            </div>
+                            <img src="assets/img/rio-de-janeiro.jpg" class="d-block w-100 img-fluid" alt="rio de janeiro">
                         </div>
-                        <img src="assets/img/rio-de-janeiro.jpg" class="d-block w-100 img-fluid" alt="rio de janeiro">
-                    </div>
-                    <div class="carousel-item" onclick="financiacion(130000)">
-                        <div class="info">
-                            <h2 class="img-title havana">Havana</h2>
-                            <hr>
-                            <p class="price">$130,000</p>
+                        <div class="carousel-item" onclick="financiacion(130000, `Havana`)">
+                            <div class="info">
+                                <h2 class="img-title havana">Havana</h2>
+                                <hr>
+                                <p class="price">$130,000</p>
+                            </div>
+                            <img src="assets/img/havana.jpg" class="d-block w-100 img-fluid" alt="havana">
                         </div>
-                        <img src="assets/img/havana.jpg" class="d-block w-100 img-fluid" alt="havana">
-                    </div>
-                    <div class="carousel-item" onclick="financiacion(70500)">
-                        <div class="info">
-                            <h2 class="img-title buenos-aires">Buenos</h2>
-                            <hr>
-                            <p class="price">$70,500</p>
+                        <div class="carousel-item" onclick="financiacion(70500,`Buenos Aires`)">
+                            <div class="info">
+                                <h2 class="img-title buenos-aires">Buenos</h2>
+                                <hr>
+                                <p class="price">$70,500</p>
+                            </div>
+                            <img src="assets/img/buenos-aires.jpg" class="d-block w-100 img-fluid" alt="buenos aires">
                         </div>
-                        <img src="assets/img/buenos-aires.jpg" class="d-block w-100 img-fluid" alt="buenos aires">
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
-        <section class="help" id="help">
-            <form class="form" autocomplete="off">
-                <input class="input name" type="text" name="name" id="" placeholder="Name" required="">
-                <input class="input surname" type="text" name="surname" placeholder="Surname" required="">
-                <input class="input email" type="email" placeholder="E-mail" required="">
-                <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
-                <input type="submit" class="submit-btn" value="Enviar">
-                <div class="respuesta"></div>
-            </form>
+            <section class="help" id="help">
+                <form class="form" autocomplete="off">
+                    <input class="input destination" type="text" name="destination" id="" placeholder="Destination" required="">
+                    <input class="input user-name" type="text" name="username" placeholder="Name" required="">
+                    <input class="input user-surname" type="text" name="user-surname" placeholder="Surname" required="">
+                    <input class="input email" type="email" placeholder="E-mail" required="">
+                    <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
+                    <input type="submit" class="submit-btn" value="Enviar">
+                    <div class="respuesta"></div>
+                </form>
+            </section>
         </section>
     </main>  
     <footer>

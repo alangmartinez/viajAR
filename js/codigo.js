@@ -4,6 +4,11 @@ const list = document.querySelector(".list");
 const title = document.querySelector(".title");
 const carousel = document.querySelector(".carousel")
 
+const destination = document.querySelector(".destination");
+const email = document.querySelector(".email");
+const boton = document.querySelector(".submit-btn");
+const userName = document.querySelector(".user-name");
+const userSurname = document.querySelector(".user-surname");
 
 addEventListener("load", ()=>{
     title.classList.add("visible");
@@ -28,9 +33,10 @@ const mostrar = ()=>{
 
 // Simulador Iteractivo
 
-const financiacion = (precioViaje)=>{
+const financiacion = (precioViaje, viaje)=>{
     const  confirmacion = confirm(`¿Deseas comenzar a financiar tu viaje?`);
 
+    destination.value = viaje;
     if(confirmacion){
         let cuotas = parseInt(prompt(`¿En cuantas cuotas deseas abonar tu viaje?
         - 1 cuota (sin interes).
@@ -71,10 +77,6 @@ const financiacion = (precioViaje)=>{
 
 // Validacion de datos
 
-const nombre = document.querySelector(".name");
-const email = document.querySelector(".email");
-const boton = document.querySelector(".submit-btn");
-const surname = document.querySelector(".surname");
 
 boton.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -93,25 +95,27 @@ boton.addEventListener("click",(e)=>{
 
 const validarDatos = ()=>{
     let error = [];
-    if(nombre.value.length <= 3){
+    if(userName.value.length < 3){
         error[0] = true;
         error[1] = "El nombre debe tener al menos 4 caracteres.";
         return error;
     }
-    else if(nombre.value.length > 10){
+    if(userName.value.length > 10){
         error[0] = true;
         error[1] = "El nombre debe tener menos de 10 caracteres.";
         return error;
     }
-    else if(surname.value.length <= 3){
+    if(userSurname.value.length < 3){
         error[0] = true;
-        error[1] = "El apellido debe tener al menos 4 caracteres."
+        error[1] = "El apellido debe tener al menos 4 caracteres.";
+        return error;
     }
-    else if(surname.value.length > 10){
+    if(userSurname.value.length > 10){
         error[0] = true;
         error[1] = "El apellido debe tener menos de 10 caracteres."
+        return error;
     }
-    else if(email.value.length < 4 ||
+    if(email.value.length < 4 ||
         email.value.length > 30 ||
         email.value.indexOf("@") == -1 ||
         email.value.indexOf(".") == -1){
