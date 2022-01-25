@@ -2,6 +2,6 @@
 
 Project "viajAR"
 
-Web Site about a turism agency.
+Web Site about a travel agency.
 
-Using Java Script technologie.
+Using Java Script language.
