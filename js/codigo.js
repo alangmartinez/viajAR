@@ -3,7 +3,6 @@ const menuBtn = document.querySelector(".menu-btn");
 const list = document.querySelector(".list");
 const title = document.querySelector(".title");
 const carousel = document.querySelector(".carousel")
-
 const destination = document.querySelector(".destination");
 const email = document.querySelector(".email");
 const boton = document.querySelector(".submit-btn");
@@ -78,7 +77,7 @@ const financiacion = (precioViaje, viaje)=>{
 // Validacion de datos
 
 
-boton.addEventListener("click",(e)=>{
+const formFeedBack = (e)=>{
     e.preventDefault();
     let error = validarDatos();
     if(error[0]){
@@ -91,7 +90,7 @@ boton.addEventListener("click",(e)=>{
         document.querySelector(".respuesta").classList.add("green");
         document.querySelector(".respuesta").classList.remove("red");
     }
-})
+};
 
 const validarDatos = ()=>{
     let error = [];
@@ -144,3 +143,22 @@ for(const viaje of viajes){
     console.log(viaje);
 }
 
+const numeros = [1,2,3,4,5,"Hola",{nombre: "Daniel"}];
+
+console.log(numeros.length);
+console.log(numeros[numeros.length - 1]);
+
+class Personas{
+    constructor(nombre, apellido, edad, profesion){
+        this.nombre = nombre,
+        this.apellido = apellido,
+        this.edad = edad,
+        this.profesion = profesion
+    }   
+}
+
+let personas = [];
+personas.push(numeros[6]);
+console.log(personas);
+numeros.pop();
+console.log(numeros);
