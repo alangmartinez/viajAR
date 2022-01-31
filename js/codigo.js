@@ -14,8 +14,7 @@ addEventListener("load", ()=>{
     // Se agrega la clase "visible" al titulo de la pagina;
     carousel.classList.add("visible");
     // Se agrega la clase "visible" al carousel principal;
-})
-
+});
 
 const mostrar = ()=>{
         const clase = menuBtn.firstElementChild.getAttribute("class");
@@ -77,7 +76,8 @@ const financiacion = (precioViaje, viaje)=>{
 // Validacion de datos
 
 
-const formFeedBack = (e)=>{
+boton.addEventListener("click", (e)=>{
+    console.log(e);
     e.preventDefault();
     let error = validarDatos();
     if(error[0]){
@@ -90,7 +90,7 @@ const formFeedBack = (e)=>{
         document.querySelector(".respuesta").classList.add("green");
         document.querySelector(".respuesta").classList.remove("red");
     }
-};
+});
 
 const validarDatos = ()=>{
     let error = [];
@@ -126,39 +126,15 @@ const validarDatos = ()=>{
     return error;
 }
 
-class Viaje{
-    constructor(destino, cuotas, precio){
-        this.destino = destino,
-        this.cuotas = cuotas,
-        this.precio = precio
+alumnos = [
+    {
+        nombre: "Alan Martinez",
+        email: "alan@gmail.xcom",
+        materia: "matematica"
+    },
+    {
+        nombre: "Manuela Godio",
+        email: "manuela@gmail.com",
+        materia: "ingles"
     }
-}
-
-let viajes = [];
-
-viajes.push(new Viaje("Rio de Janeiro", 3, 105000));
-viajes.push(new Viaje("Buenos Aires", 6, 75000));
-
-for(const viaje of viajes){
-    console.log(viaje);
-}
-
-const numeros = [1,2,3,4,5,"Hola",{nombre: "Daniel"}];
-
-console.log(numeros.length);
-console.log(numeros[numeros.length - 1]);
-
-class Personas{
-    constructor(nombre, apellido, edad, profesion){
-        this.nombre = nombre,
-        this.apellido = apellido,
-        this.edad = edad,
-        this.profesion = profesion
-    }   
-}
-
-let personas = [];
-personas.push(numeros[6]);
-console.log(personas);
-numeros.pop();
-console.log(numeros);
+]

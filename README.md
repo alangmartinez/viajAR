@@ -1,4 +1,7 @@
 # viajAR
-Proyecto viajAR
 
-Sitio web de agencia de turismo.
+Project "viajAR"
+
+Web Site about a travel agency.
+
+Using Java Script language.
