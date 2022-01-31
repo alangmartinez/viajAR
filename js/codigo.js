@@ -76,7 +76,7 @@ const financiacion = (precioViaje, viaje)=>{
 // Validacion de datos
 
 
-const feedBackFormulario = (e)=>{
+boton.addEventListener("click", (e)=>{
     console.log(e);
     e.preventDefault();
     let error = validarDatos();
@@ -90,7 +90,7 @@ const feedBackFormulario = (e)=>{
         document.querySelector(".respuesta").classList.add("green");
         document.querySelector(".respuesta").classList.remove("red");
     }
-};
+});
 
 const validarDatos = ()=>{
     let error = [];
