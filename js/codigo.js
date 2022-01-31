@@ -14,7 +14,7 @@ addEventListener("load", ()=>{
     // Se agrega la clase "visible" al titulo de la pagina;
     carousel.classList.add("visible");
     // Se agrega la clase "visible" al carousel principal;
-})
+});
 
 const mostrar = ()=>{
         const clase = menuBtn.firstElementChild.getAttribute("class");
@@ -76,7 +76,8 @@ const financiacion = (precioViaje, viaje)=>{
 // Validacion de datos
 
 
-const feedBackFormulario = (e) =>{
+const feedBackFormulario = (e)=>{
+    console.log(e);
     e.preventDefault();
     let error = validarDatos();
     if(error[0]){
@@ -89,7 +90,7 @@ const feedBackFormulario = (e) =>{
         document.querySelector(".respuesta").classList.add("green");
         document.querySelector(".respuesta").classList.remove("red");
     }
-}
+};
 
 const validarDatos = ()=>{
     let error = [];
@@ -137,7 +138,3 @@ alumnos = [
         materia: "ingles"
     }
 ]
-
-
-const datos1 = alumnos[0].keys();
-console.log(datos1);
