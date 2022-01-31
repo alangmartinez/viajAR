@@ -15,6 +15,11 @@ body{
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
+.header{
+    width: 100%;
+    height: 4rem;
+    z-index: 75;
+}
 .menu-btn{
     position: fixed;
     right: 0;
@@ -22,7 +27,7 @@ body{
     padding: .5rem;
     cursor: pointer;
     z-index: 200;
-
+    
     .fa-bars{
         color: $color-black;
         width: 100%;
@@ -73,7 +78,7 @@ body{
         &:hover .icons{
             color: #444;
         }
-
+        
         .icons{
             color: $color-white;
             font-size: 26px;
@@ -189,14 +194,35 @@ body{
             justify-content: center;
             border-radius: 10px;
             box-shadow: $shadow-1;
-    
+            
+            .label{
+                font-family: 'Source Code Pro', monospace;
+                margin-bottom: .7rem;
+                color: rgba($color: #000000, $alpha: .7);
+                font-size: 14px;
+            }
+
+            .select{
+                font-family: 'Source Code Pro', monospace;
+                padding: 6px 12px;
+                font-size: 13px;
+                margin-bottom: 2rem;
+                color: rgba($color: #000000, $alpha: .7);
+
+                .options{
+                    font-family: 'Source Code Pro', monospace;
+                    font-size: 14px;
+                    color: rgba($color: #000000, $alpha: .7);
+                }
+            }
+
             .input{
                 background-color: transparent;
                 margin-bottom: 2rem;
                 outline: none;
                 border: none;
                 border-bottom: 1px solid #000;
-                border-radius: none;
+                border-radius: 0;
                 padding: 10px;
                 padding-bottom: 5px;
                 padding-left: 5px;

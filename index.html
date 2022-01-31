@@ -21,7 +21,7 @@
     <nav class="nav">
         <header class="header">
             <div class="menu-btn" onclick="mostrar()">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars" id="bars-menu"></i>
             </div>
             <ul class="list">
                 <a class="link" href="index.html">
@@ -87,10 +87,23 @@
             </div>
             <section class="help" id="help">
                 <form class="form" autocomplete="off">
-                    <input class="input destination" type="text" name="destination" id="" placeholder="Destination" required="">
-                    <input class="input user-name" type="text" name="username" placeholder="Name" required="">
-                    <input class="input user-surname" type="text" name="user-surname" placeholder="Surname" required="">
-                    <input class="input email" type="email" placeholder="E-mail" required="">
+                    <label class="label" for="destination">Destination</label>
+                    <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination" required="">
+                    <label class="label" for="username">Name</label>
+                    <input class="input user-name" type="text" name="username" placeholder="Name" required="" id="username">
+                    <label class="label" for="user-surname">Surname</label>
+                    <input class="input user-surname" type="text" name="user-surname" placeholder="Surname" required="" id="user-surname">
+                    <label class="label" for="email">E-mail</label>
+                    <input class="input email" type="email" placeholder="example@mail.com" required="" id="email">
+                    <label class="label" for="fees">Fees</label>
+                    <select class="select" name="fees" id="fees">
+                        <option class="options" selected>Cuotas</option>
+                        <option class="options" value="1 cuota">1 cuota (sin interes)</option>
+                        <option class="options" value="3 cuotas">3 cuotas (5% interes)</option>
+                        <option class="options" value="6 cuotas">6 cuotas (12% interes)</option>
+                        <option class="options" value="9 cuotas">9 cuotas (15% interes)</option>
+                        <option class="options" value="12 cuotas">12 cuotas (21% interes)</option>
+                    </select>
                     <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
                     <input type="submit" class="submit-btn" value="Enviar">
                     <div class="respuesta"></div>
