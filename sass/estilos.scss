@@ -214,11 +214,13 @@ body{
                 margin-bottom: .7rem;
                 color: rgba($color: #000000, $alpha: .7);
                 font-size: 14px;
+            }
+            .label-fees, .label-username, .label-mail{
                 &::after{
                     content: " *";
                     color: rgb(201, 4, 4);
                 }
-            }
+            } 
 
             .select{
                 font-family: 'Source Code Pro', monospace;

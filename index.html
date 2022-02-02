@@ -91,25 +91,33 @@
             </div>
             <section class="help" id="help">
                 <form class="form" autocomplete="off">
-                    <label class="label" for="destination">Destination</label>
+
+                    <label class="label label-destination" for="destination">Destination</label>
                     <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination" required="">
-                    <label class="label" for="username">Name</label>
-                    <input class="input user-name" type="text" name="username" placeholder="Name" id="username" required="">
-                    <label class="label" for="user-surname">Surname</label>
-                    <input class="input user-surname" type="text" name="user-surname" placeholder="Surname" id="user-surname" required="">
-                    <label class="label" for="email">E-mail</label>
-                    <input class="input email" type="email" placeholder="example@mail.com" id="email" required="">
-                    <label class="label" for="fees">Fees</label>
+
+                    <label class="label label-price" for="price">Price</label>
+                    <input class="input price" type="text" name="price" id="price" placeholder="Price">
+
+                    <label class="label label-fees" for="fees">Fees</label>
                     <select class="select" name="fees" id="fees" required="">
-                        <option class="options" selected>Cuotas</option>
+                        <option class="options" selected value="">Cuotas</option>
                         <option class="options" value="1">1 cuota (sin interes)</option>
                         <option class="options" value="3">3 cuotas (5% interes)</option>
                         <option class="options" value="6">6 cuotas (12% interes)</option>
                         <option class="options" value="9">9 cuotas (15% interes)</option>
                         <option class="options" value="12">12 cuotas (21% interes)</option>
                     </select>
+
+                    <label class="label label-username" for="username">Name</label>
+                    <input class="input user-name" type="text" name="username" placeholder="Full name" id="username" required="">
+
+                    <label class="label label-mail" for="email">E-mail</label>
+                    <input class="input email" type="email" placeholder="example@mail.com" id="email" required="">
+
                     <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
+
                     <input type="submit" class="submit-btn" value="Enviar">
+
                     <div class="respuesta"></div>
                 </form>
             </section>

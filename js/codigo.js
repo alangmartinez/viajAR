@@ -7,7 +7,7 @@ const destination = document.querySelector(".destination");
 const email = document.querySelector(".email");
 const boton = document.querySelector(".submit-btn");
 const userName = document.querySelector(".user-name");
-const userSurname = document.querySelector(".user-surname");
+const price = document.getElementById("price");
 
 addEventListener("load", ()=>{
     title.classList.add("visible");
@@ -35,6 +35,8 @@ const financiacion = (precioViaje, viaje)=>{
     const  confirmacion = confirm(`¿Deseas comenzar a financiar tu viaje?`);
 
     destination.value = viaje;
+    price.value = precioViaje;
+
     if(confirmacion){
         let cuotas = parseInt(prompt(`¿En cuantas cuotas deseas abonar tu viaje?
         - 1 cuota (sin interes).
@@ -73,6 +75,8 @@ const financiacion = (precioViaje, viaje)=>{
     }
 }
 
+// Feed back User about trip price;
+
 // Validacion de datos
 
 
@@ -94,6 +98,11 @@ boton.addEventListener("click", (e)=>{
 
 const validarDatos = ()=>{
     let error = [];
+    if(fees.value == ""){
+        error[0] = true;
+        error[1] = "Debes seleccionar una cantidad de cuotas.";
+        return error;
+    }
     if(userName.value.length < 3){
         error[0] = true;
         error[1] = "El nombre debe tener al menos 4 caracteres.";
@@ -102,16 +111,6 @@ const validarDatos = ()=>{
     if(userName.value.length > 10){
         error[0] = true;
         error[1] = "El nombre debe tener menos de 10 caracteres.";
-        return error;
-    }
-    if(userSurname.value.length < 3){
-        error[0] = true;
-        error[1] = "El apellido debe tener al menos 4 caracteres.";
-        return error;
-    }
-    if(userSurname.value.length > 10){
-        error[0] = true;
-        error[1] = "El apellido debe tener menos de 10 caracteres."
         return error;
     }
     if(email.value.length < 4 ||
@@ -126,15 +125,37 @@ const validarDatos = ()=>{
     return error;
 }
 
-alumnos = [
-    {
-        nombre: "Alan Martinez",
-        email: "alan@gmail.xcom",
-        materia: "matematica"
-    },
-    {
-        nombre: "Manuela Godio",
-        email: "manuela@gmail.com",
-        materia: "ingles"
-    }
-]
+
+function Viajes(destination, price){
+    this.destination = destination;
+    this.price = price;
+}
+
+const viaje1 = new Viajes("Rio de Janeiro", 20);
+console.log(viaje1);
+
+const numbers = [1, 5, 112, 234, 543, 123, 45, 788];
+
+const impares = (arr)=>{ // Declaramos la funcion;
+    const nuevoArray = arr.filter(number => number % 2 != 0); // Filtramos los numberos impares del array;
+    console.log(nuevoArray); // Imprimimos en consola el nuevoArray de numero impares;
+}
+
+impares(numbers);  // Llamamos la funcion; 
+
+const paresEImpares = (arr)=>{
+    let pares = [];
+    let impares = [];
+    arr.map(number => {
+        if(number % 2 == 0){
+            pares.push(number);
+        }
+        else{
+            impares.push(number);
+        }
+    })
+    console.log(`Los numeros pares son: ${pares}`);
+    console.log(`Los numeros impares son: ${impares}`);
+}
+
+paresEImpares(numbers);
