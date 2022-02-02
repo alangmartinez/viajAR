@@ -27,6 +27,9 @@ body{
     padding: .5rem;
     cursor: pointer;
     z-index: 200;
+    @media screen and (min-width: 1280px) {
+        visibility: hidden;
+    }
     
     .fa-bars{
         color: $color-black;
@@ -65,7 +68,10 @@ body{
     border-radius: 230px 0 0 230px;
     box-shadow: $shadow-1;
     transition: ease-in-out all 450ms;
-    
+    @media screen and (min-width: 1280px) {
+        visibility: hidden;
+    }
+
     .link{
         text-decoration: none;
         color: #000;
@@ -93,6 +99,31 @@ body{
         margin-left: 14px;
         padding: 0;
         vertical-align: bottom;
+    }
+}
+#desktop-menu{
+    visibility: hidden;
+    @media screen and (min-width: 1280px) {
+        visibility: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        height: 3.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    
+        .list-item{
+            color: $color-white;
+            font-size: 35px;
+            text-transform: uppercase;
+            cursor: pointer;
+            &:hover{
+                border-bottom:  1px solid #fff;
+            }
+        }
     }
 }
 // .title-content{
@@ -130,6 +161,7 @@ body{
 
     @media screen and (min-width: 780px){
         flex-direction: row;
+        align-items: stretch;
         height: auto;
     }
     .carousel-container{
@@ -303,7 +335,7 @@ footer{
 }
 .red{
     text-align: center;
-    color: red;
+    color: rgb(220, 1, 1);
     font-family: sans-serif;
     margin-top: 1.2rem;
 }

@@ -79,12 +79,35 @@ const financiacion = (precioViaje, viaje)=>{
 
 // Validacion de datos
 
-function Trips(destination, price, fees, username, mail){
-    this.destination = destination;
-    this.price = price;
-    this.fees = fees;
-    this.name = username;
-    this.mail = mail
+class Trips {
+    constructor(destination, price, fees, name, mail){
+        this.destination = destination;
+        this.price = Number(price);
+        this.fees = Number(fees);
+        this.name = name;
+        this.mail = mail
+    }
+    feesCalc = ()=> {
+        const pricePerMonth = 0;
+        switch(this.fees){
+            case(3):
+                pricePerMonth = Number((this.price * 1.05) / this.fees);
+                break;
+            case(6):
+                pricePerMonth = Number((this.price * 1.12) / this.fees);
+                break;
+            case(9):
+                pricePerMonth = Number((this.price * 1.15) / this.fees);
+                break;
+            case(12):
+                pricePerMonth = Number((this.price * 1.21) / this.fees);
+                break;
+            default:
+                pricePerMonth = this.price;
+                break;
+        }
+        return pricePerMonth;
+    }
 }
 
 boton.addEventListener("click", (e)=>{
@@ -111,6 +134,7 @@ boton.addEventListener("click", (e)=>{
         for(const props in viaje1){
             console.log(`${props}: ${viaje1[props]}`);
         }
+        viaje1.feesCalc();
     }
 });
 
@@ -144,9 +168,6 @@ const validarDatos = ()=>{
     return error;
 }
 
-
-
-
 const numbers = [1, 5, 112, 234, 543, 123, 45, 788];
 
 const impares = (arr)=>{ // Declaramos la funcion;
@@ -173,3 +194,20 @@ const paresEImpares = (arr)=>{
 
 paresEImpares(numbers);
 console.log(numbers.slice(start = 0, end = 5));
+
+const armarMenuDesktop = confirm("Deseas armar un menu para desktop?");
+alert("Este menu solo sera visible para un dispositivo mayor a 1280px de ancho.");
+
+if(window.innerWidth >= 1280){
+    const desktopMenu = document.getElementById("desktop-menu");
+    const cantItems = prompt("Cuantos items quieres que tenga el menu?");
+    for(let index = 0; index < cantItems; index++){
+        const listItem = document.createElement("LI");
+        listItem.innerHTML = prompt(`Ingresa valor item ${index + 1}`);
+        desktopMenu.appendChild(listItem);
+        listItem.setAttribute("class","list-item");
+    }
+}
+else{
+    alert("Usted no dispone de un dispositivo con un ancho mayor o igual a 1280px");
+}
