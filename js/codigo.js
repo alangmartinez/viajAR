@@ -79,6 +79,13 @@ const financiacion = (precioViaje, viaje)=>{
 
 // Validacion de datos
 
+function Trips(destination, price, fees, username, mail){
+    this.destination = destination;
+    this.price = price;
+    this.fees = fees;
+    this.name = username;
+    this.mail = mail
+}
 
 boton.addEventListener("click", (e)=>{
     console.log(e);
@@ -90,9 +97,20 @@ boton.addEventListener("click", (e)=>{
         document.querySelector(".respuesta").classList.remove("green");
     }
     else{
-        document.querySelector(".respuesta").innerHTML = "Solicitud enviada correctamente.";
+        document.querySelector(".respuesta").innerHTML = error[1];
         document.querySelector(".respuesta").classList.add("green");
         document.querySelector(".respuesta").classList.remove("red");
+
+        const viaje1 = new Trips(
+            destination.value,
+            price.value,
+            fees.value,
+            userName.value,
+            email.value);
+
+        for(const props in viaje1){
+            console.log(`${props}: ${viaje1[props]}`);
+        }
     }
 });
 
@@ -100,17 +118,17 @@ const validarDatos = ()=>{
     let error = [];
     if(fees.value == ""){
         error[0] = true;
-        error[1] = "Debes seleccionar una cantidad de cuotas.";
+        error[1] = "* Cantidad cuotas invalido.";
         return error;
     }
     if(userName.value.length < 3){
         error[0] = true;
-        error[1] = "El nombre debe tener al menos 4 caracteres.";
+        error[1] = "* Nombre debe tener al menos 4 caracteres.";
         return error;
     }
-    if(userName.value.length > 10){
+    if(userName.value.length > 20){
         error[0] = true;
-        error[1] = "El nombre debe tener menos de 10 caracteres.";
+        error[1] = "* Nombre debe tener menos de 20 caracteres.";
         return error;
     }
     if(email.value.length < 4 ||
@@ -118,21 +136,16 @@ const validarDatos = ()=>{
         email.value.indexOf("@") == -1 ||
         email.value.indexOf(".") == -1){
             error[0] = true;
-            error[1] = "El email ingresado no es valido."
+            error[1] = " * E-mail ingresado invalido."
             return error;
         }
     error[0] = false;
+    error[1] = "Solicitud enviada correctamente.";
     return error;
 }
 
 
-function Viajes(destination, price){
-    this.destination = destination;
-    this.price = price;
-}
 
-const viaje1 = new Viajes("Rio de Janeiro", 20);
-console.log(viaje1);
 
 const numbers = [1, 5, 112, 234, 543, 123, 45, 788];
 
@@ -159,3 +172,4 @@ const paresEImpares = (arr)=>{
 }
 
 paresEImpares(numbers);
+console.log(numbers.slice(start = 0, end = 5));
