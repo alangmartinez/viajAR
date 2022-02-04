@@ -348,4 +348,11 @@ footer p::after {
   text-align: center;
   margin-top: 1.2rem;
   font-family: sans-serif;
+}
+
+.tripData {
+  font-family: "Source Code Pro", monospace;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 0.5rem;
 }/*# sourceMappingURL=estilos.css.map */

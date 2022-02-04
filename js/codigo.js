@@ -32,47 +32,47 @@ const mostrar = ()=>{
 // Simulador Iteractivo
 
 const financiacion = (precioViaje, viaje)=>{
-    const  confirmacion = confirm(`¿Deseas comenzar a financiar tu viaje?`);
-
+    
     destination.value = viaje;
     price.value = precioViaje;
-
-    if(confirmacion){
-        let cuotas = parseInt(prompt(`¿En cuantas cuotas deseas abonar tu viaje?
-        - 1 cuota (sin interes).
-        - 3 cuotas (5% de interes).
-        - 6 cuotas (12% de interes).
-        - 9 cuotas (15% de interes).
-        - 12 cuotas (21% de interes).`));
-        // Dependiendo el numero de cuotas elegidas se realiza el respectivo calculo.
-            if(cuotas == 1 || cuotas == 3 || cuotas == 6 || cuotas == 9 || cuotas == 12){
-                let interes = 0;
-                switch(cuotas){
-                    case 3:
-                        interes = 1.05;
-                        break;
-                    case 6: 
-                        interes = 1.12;
-                        break;
-                    case 9:
-                        interes = 1.15;
-                        break;
-                    case 12:
-                        interes = 1.21;
-                        break;
-                    default:
-                        break;
-                }
-                let valorCuota = parseInt((precioViaje * interes) / cuotas);
-                alert(`El monto abonar en cada cuota es de $ ${valorCuota}`);
-            }
-            else{
-                alert("El valor ingresado no es valido.")
-            }
-        }
-    else{
-        alert("Te esperamos pronto.")
-    }
+    
+    // const  confirmacion = confirm(`¿Deseas comenzar a financiar tu viaje?`);
+    // if(confirmacion){
+    //     let cuotas = parseInt(prompt(`¿En cuantas cuotas deseas abonar tu viaje?
+    //     - 1 cuota (sin interes).
+    //     - 3 cuotas (5% de interes).
+    //     - 6 cuotas (12% de interes).
+    //     - 9 cuotas (15% de interes).
+    //     - 12 cuotas (21% de interes).`));
+    //     // Dependiendo el numero de cuotas elegidas se realiza el respectivo calculo.
+    //         if(cuotas == 1 || cuotas == 3 || cuotas == 6 || cuotas == 9 || cuotas == 12){
+    //             let interes = 0;
+    //             switch(cuotas){
+    //                 case 3:
+    //                     interes = 1.05;
+    //                     break;
+    //                 case 6: 
+    //                     interes = 1.12;
+    //                     break;
+    //                 case 9:
+    //                     interes = 1.15;
+    //                     break;
+    //                 case 12:
+    //                     interes = 1.21;
+    //                     break;
+    //                 default:
+    //                     break;
+    //             }
+    //             let valorCuota = parseInt((precioViaje * interes) / cuotas);
+    //             alert(`El monto abonar en cada cuota es de $ ${valorCuota}`);
+    //         }
+    //         else{
+    //             alert("El valor ingresado no es valido.")
+    //         }
+    //     }
+    // else{
+    //     alert("Te esperamos pronto.")
+    // }
 }
 
 // Feed back User about trip price;
@@ -87,31 +87,11 @@ class Trips {
         this.name = name;
         this.mail = mail
     }
-    feesCalc = ()=> {
-        const pricePerMonth = 0;
-        switch(this.fees){
-            case(3):
-                pricePerMonth = Number((this.price * 1.05) / this.fees);
-                break;
-            case(6):
-                pricePerMonth = Number((this.price * 1.12) / this.fees);
-                break;
-            case(9):
-                pricePerMonth = Number((this.price * 1.15) / this.fees);
-                break;
-            case(12):
-                pricePerMonth = Number((this.price * 1.21) / this.fees);
-                break;
-            default:
-                pricePerMonth = this.price;
-                break;
-        }
-        return pricePerMonth;
-    }
 }
 
+let tripsArray = []; // Se declara un array vacio para almacenar objetos.
+
 boton.addEventListener("click", (e)=>{
-    console.log(e);
     e.preventDefault();
     let error = validarDatos();
     if(error[0]){
@@ -120,21 +100,17 @@ boton.addEventListener("click", (e)=>{
         document.querySelector(".respuesta").classList.remove("green");
     }
     else{
-        document.querySelector(".respuesta").innerHTML = error[1];
-        document.querySelector(".respuesta").classList.add("green");
-        document.querySelector(".respuesta").classList.remove("red");
-
-        const viaje1 = new Trips(
+        let trip = new Trips(
             destination.value,
             price.value,
             fees.value,
             userName.value,
-            email.value);
-
-        for(const props in viaje1){
-            console.log(`${props}: ${viaje1[props]}`);
-        }
-        viaje1.feesCalc();
+            email.value
+            );
+            document.querySelector(".respuesta").innerHTML = error[1];
+            document.querySelector(".respuesta").classList.add("green");
+            document.querySelector(".respuesta").classList.remove("red");
+            document.getElementById("tripData").innerHTML = `- Destination: ${trip.destination} </br> - Price: ${trip.price} </br> - Fees: ${trip.fees} </br> - Name: ${trip.name} </br> - E-mail: ${trip.mail}`;
     }
 });
 
@@ -195,19 +171,50 @@ const paresEImpares = (arr)=>{
 paresEImpares(numbers);
 console.log(numbers.slice(start = 0, end = 5));
 
-const armarMenuDesktop = confirm("Deseas armar un menu para desktop?");
-alert("Este menu solo sera visible para un dispositivo mayor a 1280px de ancho.");
 
-if(window.innerWidth >= 1280){
-    const desktopMenu = document.getElementById("desktop-menu");
-    const cantItems = prompt("Cuantos items quieres que tenga el menu?");
-    for(let index = 0; index < cantItems; index++){
-        const listItem = document.createElement("LI");
-        listItem.innerHTML = prompt(`Ingresa valor item ${index + 1}`);
-        desktopMenu.appendChild(listItem);
-        listItem.setAttribute("class","list-item");
+const armarMenuDesktop = confirm("Deseas armar un menu para desktop?");
+if(armarMenuDesktop){
+    alert("Este menu solo sera visible para un dispositivo mayor a 1280px de ancho.");
+    if(window.innerWidth >= 1280){
+        const desktopMenu = document.getElementById("desktop-menu");
+        const cantItems = prompt("Cuantos items quieres que tenga el menu?");
+        for(let index = 0; index < cantItems; index++){
+            const listItem = document.createElement("LI");
+            listItem.innerHTML = prompt(`Ingresa valor item ${index + 1}`);
+            desktopMenu.appendChild(listItem);
+            listItem.setAttribute("class","list-item");
+        }
+    }
+    else{
+        alert("Usted no dispone de un dispositivo con un ancho mayor o igual a 1280px");
     }
 }
 else{
-    alert("Usted no dispone de un dispositivo con un ancho mayor o igual a 1280px");
+    alert("Goodbye!");
 }
+
+// Actividad 2 
+
+class Tienda{
+    constructor(nombre, direccion, propietario, rubro){
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.propietario = propietario;
+        this.rubro = rubro
+    }
+}
+let tiendas = "";
+
+// for(let index = 0; index < 2; index++){
+//     let tienda = new Tienda(
+//         this.nombre = prompt("Ingrese nombre de la tienda"),
+//         this.direccion = prompt("Ingrese direccion de la tienda."),
+//         this.propietario = prompt("Nombre del propietario."),
+//         this.rubro = prompt("Ingrese rubro")
+//     )
+//     tiendas += `Nombre Tienda: ${this.nombre}
+//     Direccion: ${this.direccion}
+//     Propietario: ${this.propietario}
+//     Rubro: ${this.rubro}\n`
+// }
+// console.log(tiendas);
