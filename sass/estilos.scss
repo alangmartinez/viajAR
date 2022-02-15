@@ -168,6 +168,8 @@ body{
         padding: 1.5rem;
         max-height: 650px;
         max-width: 450px;
+        margin: auto;
+        cursor: pointer;
     
         .carousel-inner{
             border-radius: 10px;
@@ -350,4 +352,63 @@ footer{
     font-size: 14px;
     text-align: center;
     margin-top: .5rem;
+}
+.flex-box{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    button{
+        padding: 8px 12px;
+        border-radius: 6px;
+        outline: none;
+        text-transform: uppercase;
+        background-color: $color-white;
+        border: 1px solid $color-black;
+    }
+}
+.text-input{
+    display: block;
+    margin: auto;
+    height: 2rem;
+}
+.popup{
+    background-color: rgba($color: #ffffff, $alpha: .92);
+    border-radius: $border-radius;
+    width: 85%;
+    margin: auto;
+    padding: 2rem 4.5rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: $shadow-1;
+    transition: ease 400ms all;
+    visibility: hidden;
+    opacity: 0;
+
+    .fa-times{
+        color: rgba($color: #777777, $alpha: 1.0);
+        font-size: 20px;
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1.2rem;
+        cursor: pointer;
+
+        &:hover{
+            color: rgb(190, 8, 10);
+        }
+    }
+    h3{
+        text-align: center;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+}
+.aparecer{
+    opacity: 1;
+    visibility: visible;
 }
