@@ -1,11 +1,10 @@
-
 const menuBtn = document.querySelector(".menu-btn");
 const list = document.querySelector(".list");
 const title = document.querySelector(".title");
 const carousel = document.querySelector(".carousel")
 const destination = document.querySelector(".destination");
 const email = document.querySelector(".email");
-const boton = document.querySelector(".submit-btn");
+const submitBtn = document.querySelector(".submit-btn");
 const userName = document.querySelector(".user-name");
 const price = document.getElementById("price"),
 btnGuardar = document.getElementById("btn-guardar"),
@@ -16,11 +15,11 @@ popup = document.getElementById("popup"),
 form = document.getElementById("form");
 
 // Se ejecuta el evento cuando la ventana esta cargando.
-window.addEventListener("load", ()=>{
+onload = ()=>{
     // Scripting
     title.classList.add("visible");
     carousel.classList.add("visible");
-});
+};
 
 class Trips {
     constructor(destination, price, fees, name, mail){
@@ -32,8 +31,8 @@ class Trips {
         }
 }
 
-const mostrar = ()=>{
-        const clase = menuBtn.firstElementChild.getAttribute("class");
+mostrar = ()=>{
+        clase = menuBtn.firstElementChild.getAttribute("class");
         list.classList.toggle("visible");
         if(clase == "fas fa-bars"){
             menuBtn.firstElementChild.setAttribute("class", "fas fa-times");
@@ -51,10 +50,10 @@ const financiacion = (precioViaje, viaje)=>{
 
 const respuesta = document.createElement("p");
 
-boton.addEventListener("click", (e)=>{
+submitBtn.addEventListener("click", (e)=> {
     // Scripting
     e.preventDefault();
-    let error = validarFormulario(); 
+    let error = formCheck(); 
     if(error[0]){
         respuesta.textContent = error[1];
         respuesta.classList.add("red");
@@ -63,21 +62,22 @@ boton.addEventListener("click", (e)=>{
     }
     else{
         var trip = new Trips(
-        destination.value,
-        price.value,
-        fees.value,
-        userName.value,
-        email.value
-        );
-
-        respuesta.textContent = error[1];
-        respuesta.classList.add("green");
-        respuesta.classList.remove("red");
-        form.appendChild(respuesta);
-        popup.classList.add("aparecer");
+            destination.value,
+            price.value,
+            fees.value,
+            userName.value,
+            email.value
+            );
+            
+            respuesta.textContent = error[1];
+            respuesta.classList.add("green");
+            respuesta.classList.remove("red");
+            form.appendChild(respuesta);
+            popup.classList.add("aparecer");
+            agregarCarrito();
     }
 });
-const validarFormulario = ()=>{
+formCheck = ()=> {
     let error = [];
     if(destination.value == ""){
         error[0] = true;
@@ -107,10 +107,10 @@ const validarFormulario = ()=>{
             error[1] = " * E-mail ingresado invalido."
             return error;
         }
-    error[0] = false;
-    error[1] = "Solicitud enviada correctamente.";
-    return error;
-}
+        error[0] = false;
+        error[1] = "Solicitud enviada correctamente.";
+        return error;
+};
 
 const verDatosBtn = document.createElement("button");
 verDatosBtn.textContent = "Ver Datos";
@@ -120,7 +120,7 @@ popup.appendChild(verDatosBtn);
 const datos = document.createElement("p");
 
 // Evento click en button "Ver Datos"
-verDatosBtn.addEventListener("click", ()=> {
+verDatosBtn.onclick = ()=> {
     //Scripting
     datos.textContent = `Destino: ${destination.value}.
     Precio: ${price.value}.
@@ -128,6 +128,29 @@ verDatosBtn.addEventListener("click", ()=> {
     Nombre: ${userName.value}.
     E-mail: ${email.value}`
     popup.appendChild(datos);
-})
+}
 
-closePopupBtn.addEventListener("click", ()=> popup.classList.remove("aparecer"));
+closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
+
+const nombre = "Pedrasdo";
+
+const promesa = new Promise((resolve, reject)=>{
+    if(nombre !== "Pedro"){
+        reject("Lo siento el nombre no es Pedro")
+    }else{
+        resolve (nombre);
+    }   
+});
+
+promesa.then(resultado => console.log(resultado)).catch(e => console.log(e))
+
+const agregarCarrito = ()=> {
+    // Scripts
+    const cardContainer = document.createElement("div");
+    document.body.append(cardContainer)
+    cardContainer.classList.add("cart-container")
+    cardContainer.classList.add("aparecer")
+    cardContainer.innerHTML = `<i class="fa-solid fa-cart-flatbed-suitcase"></i>`
+    // Luego de 3 seg se remueve la clase "aparecer"
+    setTimeout(()=> cardContainer.classList.remove("aparecer"),3000)
+}

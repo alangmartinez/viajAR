@@ -1,4 +1,5 @@
 @import "_variables";
+@import "_footer";
 
 *{
     margin: 0;
@@ -156,9 +157,18 @@ body{
         max-height: 650px;
         max-width: 450px;
         margin: auto;
-        cursor: pointer;
-    
+        
+        .subtitle{
+            text-align: center;
+            font-size: 32px;
+            width: 100%;
+            color: $color-white;
+            margin: 0;
+            margin-bottom: 2rem;
+            text-shadow: $txt-shadow;
+        }
         .carousel-inner{
+            cursor: pointer;
             border-radius: 10px;
             box-shadow: $shadow-1;
             position: relative;
@@ -212,7 +222,7 @@ body{
         object-fit: cover;
         border-radius: 10px;
     }
-    .help{
+    .form-container{
         padding: 1.5rem;
         height: 100%;
         width: 100%;
@@ -289,30 +299,30 @@ body{
                 width: 45%;
                 margin: auto;
                 outline: none;
-                padding: 6px 0;
+                padding: 12px 0;
+                border: 1px solid $color-black;
+                border-radius: 5px;
+                transition: ease 150ms all;
+
+                &:hover{
+                    color: $color-white;
+                    background-color: $color-black;
+                    border: 1px solid transparent;
+                    border-radius: 5px;
+                }
                 @media screen and (min-width: 1280px) {
                     padding: 1.2rem 3.1rem;
                     width: auto;
                 }
             }
+            p{
+                margin: 0;
+                margin-top: 1.42rem;
+            }
         }
     }
 }
 
-footer{
-    width: 100%;
-    p{
-        text-align: center;
-        color: $color-white;
-        font-family: sans-serif;
-        font-size: 13px;
-        text-shadow: $txt-shadow;
-        &::after{
-            content: " Alan Martinez.";
-            color: $color-white;
-        }
-    }
-}
 .carousel{
     opacity: 0;
     transition: ease all 2s;
@@ -346,7 +356,7 @@ footer{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-
+    
     button{
         padding: 8px 12px;
         border-radius: 6px;
@@ -378,11 +388,11 @@ footer{
     display: flex;
     align-items: center;
     flex-direction: column;
-
+    
     @media screen and (min-width: 1280px) {
         width: 60%;
     }
-
+    
     .fa-times{
         color: rgba($color: #777777, $alpha: 1.0);
         font-size: 20px;
@@ -392,7 +402,7 @@ footer{
         right: 1.2rem;
         cursor: pointer;
         transition: transform ease 150ms;
-
+        
         &:hover{
             color: rgb(200, 8, 10);
         }
@@ -421,6 +431,41 @@ footer{
         margin-top: 1.5rem;
         color: #333;
         font-family: 'Source Code Pro', monospace;
+    }
+}
+.credit-card-container{
+    width: 100%;
+    padding: 4rem 2rem;
+
+    .credit-card{
+        width: 100%;
+        height: 200px;
+        background-color: $color-black;
+        border-radius: $border-radius;
+    }
+}
+
+.mayus{
+    text-transform: uppercase;
+}
+.cart-container{
+    border-radius: 50%;
+    background-color: rgba($color: #000000, $alpha: .95);
+    box-shadow: $shadow-1;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    height: 5.5rem;
+    width: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: ease-out 600ms all;
+    
+    .fa-cart-flatbed-suitcase{
+        color: $color-white;
     }
 }
 .aparecer{
