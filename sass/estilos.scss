@@ -450,23 +450,30 @@ body{
 }
 .cart-container{
     border-radius: 50%;
-    background-color: rgba($color: #000000, $alpha: .95);
+    background-color: rgba($color: #000000, $alpha: .9);
     box-shadow: $shadow-1;
     position: fixed;
     bottom: 1rem;
     left: 1rem;
-    height: 5.5rem;
-    width: 5.5rem;
+    height: 5rem;
+    width: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: ease-out 600ms all;
+    transform: translateX(-100%);
+    transition: ease-in-out 800ms all;
     
-    .fa-cart-flatbed-suitcase{
+    .fa-luggage-cart{
         color: $color-white;
+        font-size: 1.5rem;
     }
+}
+.fade-in-left{
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
 }
 .aparecer{
     opacity: 1;

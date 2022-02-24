@@ -132,25 +132,84 @@ verDatosBtn.onclick = ()=> {
 
 closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
 
-const nombre = "Pedrasdo";
-
-const promesa = new Promise((resolve, reject)=>{
-    if(nombre !== "Pedro"){
-        reject("Lo siento el nombre no es Pedro")
-    }else{
-        resolve (nombre);
-    }   
-});
-
-promesa.then(resultado => console.log(resultado)).catch(e => console.log(e))
 
 const agregarCarrito = ()=> {
     // Scripts
-    const cardContainer = document.createElement("div");
-    document.body.append(cardContainer)
-    cardContainer.classList.add("cart-container")
-    cardContainer.classList.add("aparecer")
-    cardContainer.innerHTML = `<i class="fa-solid fa-cart-flatbed-suitcase"></i>`
+    const cartContainer = document.createElement("div");
+    document.body.append(cartContainer)
+    cartContainer.classList.add("cart-container")
+    cartContainer.classList.add("fade-in-left")
+    cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>`
     // Luego de 3 seg se remueve la clase "aparecer"
-    setTimeout(()=> cardContainer.classList.remove("aparecer"),3000)
+    setTimeout(()=> cartContainer.classList.remove("fade-in-left"),3000)
 }
+
+class Persona {
+    constructor(nombre,instagram){
+        this.nombre = nombre;
+        this.instagram = instagram
+    }
+}
+
+const data = [
+    ["Alan Martinez","@alannmartinezz"],
+    ["Manuela Godio", "@manuelagodio"],
+    ["Emliano Martinez", "@eminahuel1"],
+    ["Agustin Godio"]
+]
+
+const personas = [];
+
+for(let index = 0; index < data.length; index++){
+    personas[index] = new Persona(data[index][0],data[index][1]);
+}
+console.log(personas);
+
+const obtenerPersona = (id) => new Promise ((resolve,reject)=>{
+    if(personas[id] == undefined) reject("No se ha encontrado la persona.")
+        else resolve(personas[id])
+})
+const obtenerNombre = (id)=> new Promise ((resolve,reject)=> { 
+    if(personas[id].nombre == undefined) reject("No se ha encontrado el nombre.")
+        else resolve(personas[id].nombre)
+})
+const obtenerInstagram = (id)=> new Promise ((resolve,reject)=> {
+    if(personas[id].instagram == undefined) reject("No se ha encontrado el Instagram.")
+        else resolve(personas[id].instagram)
+})
+
+obtenerPersona(4).
+    then((persona)=> {
+        console.log(persona);
+        return obtenerNombre(3);
+    }).then((nombre)=> {
+        console.log(nombre);
+        return obtenerInstagram(3)
+    }).then((instagram)=> 
+        console.log(instagram))
+        .catch((err)=> console.log(err))
+        
+const logrado = true;
+    
+const premio = () => new Promise ((resolve,reject)=> {
+    if(logrado == false) reject("Sigue Participando!")
+        else {
+            const phone = {
+                marca: "Iphone",
+                modelo: "X"
+            }
+            resolve(phone)
+        }
+})
+const premioObtenido = (mensaje)=> new Promise ((resolve,reject)=> {
+    if(mensaje) resolve(`Obtuviste un: ${mensaje.marca} ${mensaje.modelo}`)
+    else reject("Error")
+})
+
+premio().then((mensaje)=> {
+    console.log(mensaje);
+    return premioObtenido(mensaje)
+}).then((respuesta)=> {
+    console.log(respuesta)
+}).catch((err)=> 
+    console.log(err))
