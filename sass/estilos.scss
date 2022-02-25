@@ -299,6 +299,7 @@ body{
                 width: 45%;
                 margin: auto;
                 outline: none;
+                color: $color-black;
                 padding: 12px 0;
                 border: 1px solid $color-black;
                 border-radius: 5px;
@@ -474,7 +475,7 @@ body{
     .cart-indicator{
         background-color: rgb(189, 33, 27);
         border-radius: 50%;
-        padding: 5px 12px;
+        padding: 5px 11px;
         box-shadow: $shadow-1;
         position: absolute;
         top: 0;
@@ -491,4 +492,28 @@ body{
 .aparecer{
     opacity: 1;
     visibility: visible;
+}
+.modal-cart{
+    position: fixed;
+    top: 1.8rem;
+    left: 1.2rem;
+    cursor: pointer;
+
+    .fa-luggage-cart-fixed{
+        color: $color-black;
+        font-size: 1.6rem;
+    }
+    .cart-indicator-fixed{
+        background-color: rgb(189, 33, 27);
+        border-radius: 50%;
+        padding: 5px 11px;
+        box-shadow: $shadow-1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $color-white;
+        margin-top: -1.3rem;
+        margin-right: -1.3rem;
+        font-size: .7rem;
+    }
 }

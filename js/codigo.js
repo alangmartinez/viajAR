@@ -122,29 +122,40 @@ const datos = document.createElement("p");
 
 // Evento click en button "Ver Datos"
 verDatosBtn.onclick = ()=> {
-    //Scripting
-    datos.textContent = `Destino: ${destination.value}.
+    //Scripts
+    if(datos.textContent != "") datos.textContent = ""
+    else {
+        datos.textContent = `Destino: ${destination.value}.
     Precio: ${price.value}.
     Cuotas: ${fees.value}.
     Nombre: ${userName.value}.
     E-mail: ${email.value}`
+    }
     popup.appendChild(datos);
 }
 
 closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
 
-
+const cartContainer = document.createElement("div");
+const modalCart = document.createElement("div");
 const agregarCarrito = ()=> {
     // Scripts
-    const cartContainer = document.createElement("div");
     document.body.append(cartContainer)
     cartContainer.classList.add("cart-container")
     cartContainer.classList.add("fade-in-left")
     cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
     <div class="cart-indicator">${carrito.length}</div>`
     // Luego de 3 seg se remueve la clase "aparecer"
-    setTimeout(()=> cartContainer.classList.remove("fade-in-left"),3000)
+    setTimeout(()=> cartContainer.classList.remove("fade-in-left"),3500)
+    console.log(carrito);
+    if(carrito.length > 0){
+        modalCart.classList.add("modal-cart");
+        modalCart.innerHTML= `<i class="fas fa-luggage-cart fa-luggage-cart-fixed"></i>
+        <div class="cart-indicator-fixed">${carrito.length}</div>`;
+        document.body.append(modalCart);
+    }
 }
+
 
 class Persona {
     constructor(nombre,instagram){
