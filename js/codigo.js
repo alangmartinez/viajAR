@@ -145,7 +145,8 @@ const agregarCarrito = ()=> {
     cartContainer.classList.add("fade-in-left")
     cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
     <div class="cart-indicator">${carrito.length}</div>`
-    // Luego de 3 seg se remueve la clase "aparecer"
+    if(window.innerWidth < 1280){
+        // Luego de 3 seg se remueve la clase "aparecer"
     setTimeout(()=> cartContainer.classList.remove("fade-in-left"),3500)
     console.log(carrito);
     if(carrito.length > 0){
@@ -153,9 +154,21 @@ const agregarCarrito = ()=> {
         modalCart.innerHTML= `<i class="fas fa-luggage-cart fa-luggage-cart-fixed"></i>
         <div class="cart-indicator-fixed">${carrito.length}</div>`;
         document.body.append(modalCart);
+        }
     }
 }
 
+if(window.innerWidth > 1280){
+    const arrowContainer = document.createElement("div");
+    window.addEventListener("scroll", ()=> {
+        if(this.scrollY > 85){
+            arrowContainer.classList.add("arrow-container");
+            arrowContainer.classList.add("fade-in-right");
+            arrowContainer.innerHTML = `<i class="fas fa-angle-left"></i>`;
+            document.body.append(arrowContainer);
+        }else arrowContainer.remove();
+    })
+}
 
 class Persona {
     constructor(nombre,instagram){

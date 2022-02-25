@@ -20,8 +20,8 @@
     <title>ViajAR</title>
 </head>
 <body>
-    <nav class="nav">
-        <header class="header">
+    <header class="header">
+        <nav class="nav-mobile">
             <div class="menu-btn" onclick="mostrar()">
                 <i class="fas fa-bars" id="bars-menu"></i>
             </div>
@@ -44,8 +44,16 @@
                 </a>
             </ul>
             <ul id="desktop-menu"></ul>
-        </header>
-    </nav>
+        </nav>
+        <nav class="nav-desktop">
+            <ul class="list">
+                <li class="list-item"><a href="index.html"><i class="fas fa-home icons"></i>Home</a></li>
+                <li class="list-item"><a href="#"><i class="fas fa-plane-departure icons"></i>Viajes</a></li>
+                <li class="list-item"><a href="#"><i class="fas fa-clipboard icons"></i>About Us</a></li>
+                <li class="list-item"><a href="#"><i class="far fa-question-circle icons"></i>Help</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <h1 class="title">viaj</h1>
         
@@ -88,6 +96,27 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+            </div>
+            <div class="trip-container havana">
+                <div class="trip">
+                    <h2 class="trip_title">Havana</h2>
+                    <p class="trip_price">$130,000</p>
+                </div>
+                <button>Agregar !</button>
+            </div>
+            <div class="trip-container buenos-aires">
+                <div class="trip">
+                    <h2 class="trip_title">Buenos Aires</h2>
+                    <p class="trip_price">$70,500</p>
+                </div>
+                <button>Agregar !</button>
+            </div>
+            <div class="trip-container rio-janeiro">
+                <div class="trip">
+                    <h2 class="trip_title">Rio de Janeiro</h2>
+                    <p class="trip_price">$105,000</p>
+                </div>
+                <button>Agregar !</button>
             </div>
             <section class="form-container" id="form-container">
                 <form class="form" autocomplete="off" id="form">

@@ -10,96 +10,144 @@
 }
 body{
     background-image: url(../assets/img/fondo/fondo.jpg);
-    background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     overflow-x: hidden;
 }
-.header{
+.nav-mobile{
     width: 100%;
     height: 4rem;
     z-index: 75;
-}
-.menu-btn{
-    position: fixed;
-    right: 0;
-    top: 0;
-    padding: .5rem;
-    cursor: pointer;
-    z-index: 200;
-    @media screen and (min-width: 1280px) {
-        visibility: hidden;
-    }
-    
-    .fa-bars{
-        color: $color-black;
-        width: 100%;
-        height: 100%;
-        font-size: 1.7rem;
-        padding: 10px;
-    }
-    .fa-times{
-        color: $color-white;
-        width: 100%;
-        height: 100%;
-        font-size: 2rem;
-        padding: 10px;
-    }
-}
-.list{
-    position: fixed;
-    top: 0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    height: 100vh;
-    width: 100%;
-    gap: 2.5rem;
-    letter-spacing: 2px;
-    background-color: $color-black;
-    z-index: 100;
-    transform: translateX(100%);
-    opacity: 0;
-    visibility: hidden;
-    border-radius: 230px 0 0 230px;
-    box-shadow: $shadow-1;
-    transition: ease-in-out all 450ms;
-    @media screen and (min-width: 1280px) {
-        visibility: hidden;
-    }
 
-    .link{
-        text-decoration: none;
-        color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &:hover .list__item{
-            color: #444;
-        }
-        &:hover .icons{
-            color: #444;
+    @media screen and (min-width: 1280px) {
+        display: none;
+    }
+    .menu-btn{
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding: .5rem;
+        cursor: pointer;
+        z-index: 200;
+        @media screen and (min-width: 1280px) {
+            visibility: hidden;
         }
         
-        .icons{
+        .fa-bars{
+            color: $color-black;
+            width: 100%;
+            height: 100%;
+            font-size: 1.7rem;
+            padding: 10px;
+        }
+        .fa-times{
             color: $color-white;
-            font-size: 26px;
-            height: 31px;
+            width: 100%;
+            height: 100%;
+            font-size: 2rem;
+            padding: 10px;
         }
     }
-    &__item{
-        text-transform: uppercase;
-        color: $color-white;
-        font-size: 24px;
+    .list{
+        position: fixed;
+        top: 0;
         margin: 0;
-        margin-left: 14px;
         padding: 0;
-        vertical-align: bottom;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        height: 100vh;
+        width: 100%;
+        gap: 2.5rem;
+        letter-spacing: 2px;
+        background-color: $color-black;
+        z-index: 100;
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 230px 0 0 230px;
+        box-shadow: $shadow-1;
+        transition: ease-in-out all 450ms;
+        @media screen and (min-width: 1280px) {
+            visibility: hidden;
+        }
+    
+        .link{
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover .list__item{
+                color: #444;
+            }
+            &:hover .icons{
+                color: #444;
+            }
+            
+            .icons{
+                color: $color-white;
+                font-size: 26px;
+                height: 31px;
+            }
+        }
+        &__item{
+            text-transform: uppercase;
+            color: $color-white;
+            font-size: 24px;
+            margin: 0;
+            margin-left: 14px;
+            padding: 0;
+            vertical-align: bottom;
+        }
+    }
+}
+.nav-desktop{
+    display: none;
+    @media screen and (min-width: 1280px){
+        display: block;
+        width: 100%;
+    }
+    .list{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        padding: 1rem 3rem;
+        gap: 3.6rem;
+        width: 100%;
+        list-style: none;
+
+        .list-item{
+            font-size: 1.8rem;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: transform ease-out 150ms;
+
+            &:hover{
+                transform: scale(1.1);
+                border-bottom: 2px solid rgba($color: #fff, $alpha: .92);
+            }
+
+            a{
+                text-decoration: none;
+                color: rgba($color: #fff, $alpha: .92);
+                text-shadow: $txt-shadow;
+
+                i{
+                    margin-right: .5rem;
+                    font-size: 1.8rem;
+                }
+            }
+        }
     }
 }
 #desktop-menu{
@@ -136,6 +184,10 @@ body{
     transform: translateX(-100%);
     transition: ease-in-out all 1300ms;
 
+    @media screen and (min-width: 1280px) {
+        margin-bottom: 7rem;
+    }
+
     &::after{
         content: "AR.";
         color: rgb(200, 11, 43);
@@ -147,16 +199,15 @@ body{
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 780px){
-        flex-direction: row;
-        align-items: stretch;
-        height: auto;
-    }
     .carousel-container{
         padding: 1.5rem;
         max-height: 650px;
         max-width: 450px;
         margin: auto;
+
+        @media screen and (min-width: 1280px) {
+            display: none;
+        }
         
         .subtitle{
             text-align: center;
@@ -221,6 +272,73 @@ body{
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
+    }
+    .buenos-aires{
+        background-image: url(../assets/img/buenos-aires-desktop.jpg);
+    }
+    .havana{
+        background-image: url(../assets/img/havana-desktop.jpg);
+    }
+    .rio-janeiro{
+        background-image: url(../assets/img/rio-janeiro-desktop.jpg);
+    }
+    .trip-container{
+        width: 100%;
+        height: 800px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+
+        .trip{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+
+            &_title{
+                color: $color-white;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 70px;
+                margin-top: 5rem;
+                margin-left: 5rem;
+                margin-bottom: 1rem;
+                text-shadow: $txt-shadow;
+            }
+            &_price{
+                font-size: 70px;
+                text-shadow: $txt-shadow;
+                margin-left: 13rem;
+                color: $color-white;
+            }
+        }
+        button{
+            background: #FEBA0B;
+            padding: 1rem 40px;
+            cursor: pointer;
+            color: $color-white;
+            border-radius: 20px;
+            box-shadow: $shadow-1;
+            font-weight: 300;
+            border: none;
+            font-size: 1.2rem;
+            width: 12rem;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 7rem;
+            right: 5rem;
+            transition: ease 150ms all;
+
+            &:hover{
+                color: #FEBA0B;
+                background-color: $color-white;
+                transform: scale(1.05);
+            }
+            &:hover .trip-container{
+                filter: grayscale(100%);
+            }
+        }
     }
     .form-container{
         padding: 1.5rem;
@@ -498,6 +616,9 @@ body{
     top: 1.8rem;
     left: 1.2rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .fa-luggage-cart-fixed{
         color: $color-black;
@@ -516,4 +637,32 @@ body{
         margin-right: -1.3rem;
         font-size: .7rem;
     }
+}
+.arrow-container{
+    background-color: rgba($color: #ffffff, $alpha: .95);
+    border-radius: 50%;
+    box-shadow: $shadow-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: ease 1000ms all;
+
+    .fa-angle-left{
+        color: $color-black;
+        font-size: 2.7rem;
+    }
+}
+.fade-in-right{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
