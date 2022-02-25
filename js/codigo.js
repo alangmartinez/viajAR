@@ -49,7 +49,7 @@ const financiacion = (precioViaje, viaje)=>{
 }
 
 const respuesta = document.createElement("p");
-
+const carrito = [];
 submitBtn.addEventListener("click", (e)=> {
     // Scripting
     e.preventDefault();
@@ -61,7 +61,7 @@ submitBtn.addEventListener("click", (e)=> {
         form.appendChild(respuesta);
     }
     else{
-        var trip = new Trips(
+        let trip = new Trips(
             destination.value,
             price.value,
             fees.value,
@@ -74,6 +74,7 @@ submitBtn.addEventListener("click", (e)=> {
             respuesta.classList.remove("red");
             form.appendChild(respuesta);
             popup.classList.add("aparecer");
+            carrito.push(trip);
             agregarCarrito();
     }
 });
@@ -139,7 +140,8 @@ const agregarCarrito = ()=> {
     document.body.append(cartContainer)
     cartContainer.classList.add("cart-container")
     cartContainer.classList.add("fade-in-left")
-    cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>`
+    cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
+    <div class="cart-indicator">${carrito.length}</div>`
     // Luego de 3 seg se remueve la clase "aparecer"
     setTimeout(()=> cartContainer.classList.remove("fade-in-left"),3000)
 }

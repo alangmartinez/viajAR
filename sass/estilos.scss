@@ -302,6 +302,7 @@ body{
                 padding: 12px 0;
                 border: 1px solid $color-black;
                 border-radius: 5px;
+                background-color: $color-white;
                 transition: ease 150ms all;
 
                 &:hover{
@@ -460,6 +461,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     opacity: 0;
     visibility: hidden;
     transform: translateX(-100%);
@@ -468,6 +470,17 @@ body{
     .fa-luggage-cart{
         color: $color-white;
         font-size: 1.5rem;
+    }
+    .cart-indicator{
+        background-color: rgb(189, 33, 27);
+        border-radius: 50%;
+        padding: 5px 12px;
+        box-shadow: $shadow-1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $color-white;
+        margin-top: -.5rem;
     }
 }
 .fade-in-left{

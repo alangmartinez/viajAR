@@ -330,6 +330,7 @@ body {
   padding: 12px 0;
   border: 1px solid #000;
   border-radius: 5px;
+  background-color: #fff;
   transition: ease 150ms all;
 }
 .main-container .form-container .form .submit-btn:hover {
@@ -492,6 +493,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   opacity: 0;
   visibility: hidden;
   transform: translateX(-100%);
@@ -500,6 +502,17 @@ body {
 .cart-container .fa-luggage-cart {
   color: #fff;
   font-size: 1.5rem;
+}
+.cart-container .cart-indicator {
+  background-color: #bd211b;
+  border-radius: 50%;
+  padding: 5px 12px;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  margin-top: -0.5rem;
 }
 
 .fade-in-left {
