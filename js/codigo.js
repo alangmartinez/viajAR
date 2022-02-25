@@ -1,5 +1,3 @@
-const menuBtn = document.querySelector(".menu-btn");
-const list = document.querySelector(".list");
 const title = document.querySelector(".title");
 const carousel = document.querySelector(".carousel")
 const destination = document.querySelector(".destination");
@@ -32,6 +30,8 @@ class Trips {
 }
 
 mostrar = ()=>{
+        const list = document.querySelector(".mobile-menu");
+        const menuBtn = document.querySelector(".menu-btn");
         clase = menuBtn.firstElementChild.getAttribute("class");
         list.classList.toggle("visible");
         if(clase == "fas fa-bars"){
@@ -137,36 +137,26 @@ verDatosBtn.onclick = ()=> {
 closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
 
 const cartContainer = document.createElement("div");
-const modalCart = document.createElement("div");
 const agregarCarrito = ()=> {
     // Scripts
     document.body.append(cartContainer)
-    cartContainer.classList.add("cart-container")
-    cartContainer.classList.add("fade-in-left")
+    cartContainer.classList.add("cart-container");
     cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
-    <div class="cart-indicator">${carrito.length}</div>`
-    if(window.innerWidth < 1280){
-        // Luego de 3 seg se remueve la clase "aparecer"
-    setTimeout(()=> cartContainer.classList.remove("fade-in-left"),3500)
-    console.log(carrito);
-    if(carrito.length > 0){
-        modalCart.classList.add("modal-cart");
-        modalCart.innerHTML= `<i class="fas fa-luggage-cart fa-luggage-cart-fixed"></i>
-        <div class="cart-indicator-fixed">${carrito.length}</div>`;
-        document.body.append(modalCart);
-        }
-    }
+    <div class="cart-indicator">${carrito.length}</div>`;
+    document.body.append(cartContainer);
+    cartContainer.classList.add("fade-in-left");
 }
 
+const arrowContainer = document.createElement("div");
 if(window.innerWidth > 1280){
-    const arrowContainer = document.createElement("div");
+    //Scripts
+    arrowContainer.classList.add("arrow-container");
+    arrowContainer.innerHTML = `<a href="#menu-desktop"><i class="fas fa-angle-up"></i></a>`;
+    document.body.append(arrowContainer);
     window.addEventListener("scroll", ()=> {
-        if(this.scrollY > 85){
-            arrowContainer.classList.add("arrow-container");
+        if(this.scrollY > 95){
             arrowContainer.classList.add("fade-in-right");
-            arrowContainer.innerHTML = `<i class="fas fa-angle-left"></i>`;
-            document.body.append(arrowContainer);
-        }else arrowContainer.remove();
+        }else{arrowContainer.classList.remove("fade-in-right")}
     })
 }
 

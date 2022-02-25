@@ -43,10 +43,10 @@
                     <li class="list__item">Help</li>
                 </a>
             </ul>
-            <ul id="desktop-menu"></ul>
         </nav>
         <nav class="nav-desktop">
-            <ul class="list">
+            <a href="index.html"><h2 class="title">viaj</h2></a>
+            <ul class="list menu-desktop" id="menu-desktop">
                 <li class="list-item"><a href="index.html"><i class="fas fa-home icons"></i>Home</a></li>
                 <li class="list-item"><a href="#"><i class="fas fa-plane-departure icons"></i>Viajes</a></li>
                 <li class="list-item"><a href="#"><i class="fas fa-clipboard icons"></i>About Us</a></li>
@@ -55,8 +55,10 @@
         </nav>
     </header>
     <main>
-        <h1 class="title">viaj</h1>
-        
+        <div class="search-container">
+            <input type="search" placeholder="Type here..." class="search">
+            <i class="fas fa-search"></i>
+        </div>
         <section class="main-container">
             <div class="carousel-container">
                 <h2 class="subtitle">Click on Picture !</h2>
@@ -102,21 +104,21 @@
                     <h2 class="trip_title">Havana</h2>
                     <p class="trip_price">$130,000</p>
                 </div>
-                <button>Agregar !</button>
+                <button onclick="financiacion(130000,`Havana`)">Agregar !</button>
             </div>
             <div class="trip-container _buenos_aires">
                 <div class="trip">
                     <h2 class="trip_title">Buenos Aires</h2>
                     <p class="trip_price">$70,500</p>
                 </div>
-                <button>Agregar !</button>
+                <button onclick="financiacion(70500,`Buenos Aires`)">Agregar !</button>
             </div>
             <div class="trip-container _rio_janeiro">
                 <div class="trip">
                     <h2 class="trip_title">Rio de Janeiro</h2>
                     <p class="trip_price">$105,000</p>
                 </div>
-                <button>Agregar !</button>
+                <button onclick="financiacion(105000,`Rio de Janeiro`)">Agregar !</button>
             </div>
             <section class="form-container" id="form-container">
                 <form class="form" autocomplete="off" id="form">
