@@ -22,7 +22,7 @@ footer p::after {
 }
 
 body {
-  background-image: url(../assets/img/fondo/fondo.jpg);
+  background-color: #fff;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -291,22 +291,28 @@ body {
      object-fit: cover;
   border-radius: 10px;
 }
-.main-container .buenos-aires {
+.main-container ._buenos_aires {
   background-image: url(../assets/img/buenos-aires-desktop.jpg);
 }
-.main-container .havana {
+.main-container ._havana {
   background-image: url(../assets/img/havana-desktop.jpg);
 }
-.main-container .rio-janeiro {
+.main-container ._rio_janeiro {
   background-image: url(../assets/img/rio-janeiro-desktop.jpg);
 }
 .main-container .trip-container {
+  display: none;
   width: 100%;
   height: 800px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+}
+@media screen and (min-width: 1280px) {
+  .main-container .trip-container {
+    display: block;
+  }
 }
 .main-container .trip-container .trip {
   display: flex;
