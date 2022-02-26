@@ -1,4 +1,4 @@
-const tips = [
+const trips = [
     {
         destination: "Rio de Janeiro",
         price: 105000,
