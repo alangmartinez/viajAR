@@ -1,24 +1,38 @@
-
-const menuBtn = document.querySelector(".menu-btn");
-const list = document.querySelector(".list");
 const title = document.querySelector(".title");
 const carousel = document.querySelector(".carousel")
 const destination = document.querySelector(".destination");
 const email = document.querySelector(".email");
-const boton = document.querySelector(".submit-btn");
+const submitBtn = document.querySelector(".submit-btn");
 const userName = document.querySelector(".user-name");
-const userSurname = document.querySelector(".user-surname");
+const price = document.getElementById("price"),
+btnGuardar = document.getElementById("btn-guardar"),
+btnMostrar = document.getElementById("btn-mostrar"),
+textInput = document.getElementById("text-input"),
+closePopupBtn = document.getElementById("close-popup-btn"),
+popup = document.getElementById("popup"),
+form = document.getElementById("form");
 
-addEventListener("load", ()=>{
+// Se ejecuta el evento cuando la ventana esta cargando.
+onload = ()=>{
+    // Scripting
     title.classList.add("visible");
-    // Se agrega la clase "visible" al titulo de la pagina;
     carousel.classList.add("visible");
-    // Se agrega la clase "visible" al carousel principal;
-});
+};
 
-const mostrar = ()=>{
-        const clase = menuBtn.firstElementChild.getAttribute("class");
-        // Se obtiene el contenido del atributo class;
+class Trips {
+    constructor(destination, price, fees, name, mail){
+        this.destination = destination;
+        this.price = Number(price);
+        this.fees = Number(fees);
+        this.name = name;
+        this.mail = mail
+        }
+}
+
+mostrar = ()=>{
+        const list = document.querySelector(".mobile-menu");
+        const menuBtn = document.querySelector(".menu-btn");
+        clase = menuBtn.firstElementChild.getAttribute("class");
         list.classList.toggle("visible");
         if(clase == "fas fa-bars"){
             menuBtn.firstElementChild.setAttribute("class", "fas fa-times");
@@ -29,89 +43,61 @@ const mostrar = ()=>{
         }
     }
 
-// Simulador Iteractivo
-
 const financiacion = (precioViaje, viaje)=>{
-    const  confirmacion = confirm(`¿Deseas comenzar a financiar tu viaje?`);
-
     destination.value = viaje;
-    if(confirmacion){
-        let cuotas = parseInt(prompt(`¿En cuantas cuotas deseas abonar tu viaje?
-        - 1 cuota (sin interes).
-        - 3 cuotas (5% de interes).
-        - 6 cuotas (12% de interes).
-        - 9 cuotas (15% de interes).
-        - 12 cuotas (21% de interes).`));
-        // Dependiendo el numero de cuotas elegidas se realiza el respectivo calculo.
-            if(cuotas == 1 || cuotas == 3 || cuotas == 6 || cuotas == 9 || cuotas == 12){
-                let interes = 0;
-                switch(cuotas){
-                    case 3:
-                        interes = 1.05;
-                        break;
-                    case 6: 
-                        interes = 1.12;
-                        break;
-                    case 9:
-                        interes = 1.15;
-                        break;
-                    case 12:
-                        interes = 1.21;
-                        break;
-                    default:
-                        break;
-                }
-                let valorCuota = parseInt((precioViaje * interes) / cuotas);
-                alert(`El monto abonar en cada cuota es de $ ${valorCuota}`);
-            }
-            else{
-                alert("El valor ingresado no es valido.")
-            }
-        }
-    else{
-        alert("Te esperamos pronto.")
-    }
+    price.value = precioViaje;
 }
 
-// Validacion de datos
-
-
-boton.addEventListener("click", (e)=>{
-    console.log(e);
+const respuesta = document.createElement("p");
+const carrito = [];
+submitBtn.addEventListener("click", (e)=> {
+    // Scripting
     e.preventDefault();
-    let error = validarDatos();
+    let error = formCheck(); 
     if(error[0]){
-        document.querySelector(".respuesta").innerHTML = error[1];
-        document.querySelector(".respuesta").classList.add("red");
-        document.querySelector(".respuesta").classList.remove("green");
+        respuesta.textContent = error[1];
+        respuesta.classList.add("red");
+        respuesta.classList.remove("green");
+        form.appendChild(respuesta);
     }
     else{
-        document.querySelector(".respuesta").innerHTML = "Solicitud enviada correctamente.";
-        document.querySelector(".respuesta").classList.add("green");
-        document.querySelector(".respuesta").classList.remove("red");
+        let trip = new Trips(
+            destination.value,
+            price.value,
+            fees.value,
+            userName.value,
+            email.value
+            );
+            
+            respuesta.textContent = error[1];
+            respuesta.classList.add("green");
+            respuesta.classList.remove("red");
+            form.appendChild(respuesta);
+            popup.classList.add("aparecer");
+            carrito.push(trip);
+            agregarCarrito();
     }
 });
-
-const validarDatos = ()=>{
+formCheck = ()=> {
     let error = [];
+    if(destination.value == ""){
+        error[0] = true;
+        error[1] = "* Debe seleccionar un destino";
+        return error;
+    }
+    if(fees.value == ""){
+        error[0] = true;
+        error[1] = "* Cantidad cuotas invalido.";
+        return error;
+    }
     if(userName.value.length < 3){
         error[0] = true;
-        error[1] = "El nombre debe tener al menos 4 caracteres.";
+        error[1] = "* Nombre debe tener al menos 4 caracteres.";
         return error;
     }
-    if(userName.value.length > 10){
+    if(userName.value.length > 20){
         error[0] = true;
-        error[1] = "El nombre debe tener menos de 10 caracteres.";
-        return error;
-    }
-    if(userSurname.value.length < 3){
-        error[0] = true;
-        error[1] = "El apellido debe tener al menos 4 caracteres.";
-        return error;
-    }
-    if(userSurname.value.length > 10){
-        error[0] = true;
-        error[1] = "El apellido debe tener menos de 10 caracteres."
+        error[1] = "* Nombre debe tener menos de 20 caracteres.";
         return error;
     }
     if(email.value.length < 4 ||
@@ -119,22 +105,64 @@ const validarDatos = ()=>{
         email.value.indexOf("@") == -1 ||
         email.value.indexOf(".") == -1){
             error[0] = true;
-            error[1] = "El email ingresado no es valido."
+            error[1] = " * E-mail ingresado invalido."
             return error;
         }
-    error[0] = false;
-    return error;
+        error[0] = false;
+        error[1] = "Solicitud enviada correctamente.";
+        return error;
+};
+
+const verDatosBtn = document.createElement("button");
+verDatosBtn.textContent = "Ver Datos";
+verDatosBtn.classList.add("button");
+popup.appendChild(verDatosBtn);
+
+const datos = document.createElement("p");
+
+// Evento click en button "Ver Datos"
+verDatosBtn.onclick = ()=> {
+    //Scripts
+    if(datos.textContent != "") datos.textContent = ""
+    else {
+        datos.textContent = `Destino: ${destination.value}.
+    Precio: ${price.value}.
+    Cuotas: ${fees.value}.
+    Nombre: ${userName.value}.
+    E-mail: ${email.value}`
+    }
+    popup.appendChild(datos);
 }
 
-alumnos = [
-    {
-        nombre: "Alan Martinez",
-        email: "alan@gmail.xcom",
-        materia: "matematica"
-    },
-    {
-        nombre: "Manuela Godio",
-        email: "manuela@gmail.com",
-        materia: "ingles"
+closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
+
+const cartContainer = document.createElement("div");
+const agregarCarrito = ()=> {
+    // Scripts
+    document.body.append(cartContainer)
+    cartContainer.classList.add("cart-container");
+    cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
+    <div class="cart-indicator">${carrito.length}</div>`;
+    document.body.append(cartContainer);
+    cartContainer.classList.add("fade-in-left");
+}
+
+const arrowContainer = document.createElement("div");
+if(window.innerWidth > 1280){
+    //Scripts
+    arrowContainer.classList.add("arrow-container");
+    arrowContainer.innerHTML = `<a href="#menu-desktop"><i class="fas fa-angle-up"></i></a>`;
+    document.body.append(arrowContainer);
+    window.addEventListener("scroll", ()=> {
+        if(this.scrollY > 95){
+            arrowContainer.classList.add("fade-in-right");
+        }else{arrowContainer.classList.remove("fade-in-right")}
+    })
+}
+
+class Persona {
+    constructor(nombre,instagram){
+        this.nombre = nombre;
+        this.instagram = instagram
     }
-]
+}
