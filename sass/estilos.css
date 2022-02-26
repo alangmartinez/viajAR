@@ -615,7 +615,7 @@ main .main-container .form-container .form p {
   opacity: 0;
   visibility: hidden;
   transform: translateX(-100%);
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 700ms all;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 900ms all;
 }
 .cart-container .fa-luggage-cart {
   color: #fff;

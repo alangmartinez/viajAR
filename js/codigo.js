@@ -1,5 +1,3 @@
-const title = document.querySelector(".title");
-const carousel = document.querySelector(".carousel")
 const destination = document.querySelector(".destination");
 const email = document.querySelector(".email");
 const submitBtn = document.querySelector(".submit-btn");
@@ -15,7 +13,7 @@ form = document.getElementById("form");
 // Se ejecuta el evento cuando la ventana esta cargando.
 onload = ()=>{
     // Scripting
-    title.classList.add("visible");
+    const carousel = document.querySelector(".carousel")
     carousel.classList.add("visible");
 };
 
@@ -143,7 +141,6 @@ const agregarCarrito = ()=> {
     cartContainer.classList.add("cart-container");
     cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
     <div class="cart-indicator">${carrito.length}</div>`;
-    document.body.append(cartContainer);
     cartContainer.classList.add("fade-in-left");
 }
 
