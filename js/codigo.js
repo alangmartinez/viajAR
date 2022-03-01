@@ -34,14 +34,28 @@ btnMenu.addEventListener("click", ()=>{
             <h2 class="trip_title">${trips[index].destination}</h2>
             <p class="trip_price">$${trips[index].price}</p>
         </div>
-        <button id="agregar-viaje">Agregar !</button>
+        <button id="btnAddCart">Agregar !</button>
     </div>`
     }
 
+const alertAgregado = document.querySelector(".alert-success");
+const cart = [];
+const btnAddCart = document.querySelectorAll("#btnAddCart");
+btnAddCart.forEach((btn, index) => {
+    btn.addEventListener("click", ()=>{
+        alertAgregado.classList.add("fade-in-top");
+        setTimeout(()=>{ // Se remueve fade in, luego de 2500ms
+            alertAgregado.classList.remove("fade-in-top")
+        },2500);
+        // Agregar objeto al array "cart", el objeto debe tener destino y precio
+        cart.push(trips.find(trip => trip.id == index))
+        agregarCarrito();
+    })
+});
+
 const respuesta = document.createElement("p");
-const carrito = [];
 submitBtn.addEventListener("click", (e)=> {
-    // Scripting
+    // Scripts
     e.preventDefault();
     let error = formCheck(); 
     if(error[0]){
@@ -95,31 +109,14 @@ formCheck = ()=> {
 
 closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
 
-const agregarViaje = document.querySelectorAll("#agregar-viaje");
-const alertAgregado = document.querySelector(".alert-success");
-console.log(agregarViaje);
-
-agregarViaje.forEach((button)=>{
-    button.addEventListener("click", ()=> {
-        alertAgregado.classList.add("fade-in-top");
-        // Se remueve fade in, luego de 2500ms
-        setTimeout(()=>{
-            alertAgregado.classList.remove("fade-in-top")
-        },2500);
-        // agregar objeto al array "carrito", el objeto debe tener destino y precio
-        agregarCarrito();
-    })
-})
-
-
 const cartContainer = document.createElement("div");
 const agregarCarrito = ()=> {
     // Scripts
-    if(carrito.length > 0){
+    if(cart.length > 0){
         document.body.append(cartContainer)
         cartContainer.classList.add("cart-container");
         cartContainer.innerHTML = `<a><i class="fas fa-luggage-cart"></i>
-        <div class="cart-indicator">${carrito.length}</div></a>`;
+        <div class="cart-indicator">${cart.length}</div></a>`;
         cartContainer.classList.add("fade-in-left");
     }
 }

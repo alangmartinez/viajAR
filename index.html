@@ -64,7 +64,7 @@
                 <h2 class="subtitle">Click on Picture !</h2>
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" onclick="financiacion(105000, `Rio de Janeiro`)">
+                        <div class="carousel-item active">
                             <div class="info">
                                 <h2 class="img-title rio-janeiro">Rio de</h2>
                                 <hr>
@@ -72,7 +72,7 @@
                             </div>
                             <img src="assets/img/rio-de-janeiro.jpg" class="d-block w-100 img-fluid" alt="rio de janeiro">
                         </div>
-                        <div class="carousel-item" onclick="financiacion(130000, `Havana`)">
+                        <div class="carousel-item">
                             <div class="info">
                                 <h2 class="img-title havana">Havana</h2>
                                 <hr>
@@ -80,7 +80,7 @@
                             </div>
                             <img src="assets/img/havana.jpg" class="d-block w-100 img-fluid" alt="havana">
                         </div>
-                        <div class="carousel-item" onclick="financiacion(70500,`Buenos Aires`)">
+                        <div class="carousel-item">
                             <div class="info">
                                 <h2 class="img-title buenos-aires">Buenos</h2>
                                 <hr>
@@ -112,29 +112,33 @@
             <section class="form-container" id="form-container">
                 <form class="form" autocomplete="off" id="form">
 
-                    <label class="label label-destination" for="destination">Destination</label>
-                    <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination" required="">
+                    <div class="section-1">
+                        <label class="label label-destination" for="destination">Destination</label>
+                        <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination" required="">
 
-                    <label class="label label-price" for="price">Price</label>
-                    <input class="input price" type="text" name="price" id="price" placeholder="Price">
+                        <label class="label label-price" for="price">Price</label>
+                        <input class="input price" type="text" name="price" id="price" placeholder="Price">
 
-                    <label class="label label-fees" for="fees">Fees</label>
-                    <select class="select" name="fees" id="fees" required="">
-                        <option class="options" selected value="">Cuotas</option>
-                        <option class="options" value="1">1 cuota (sin interes)</option>
-                        <option class="options" value="3">3 cuotas (5% interes)</option>
-                        <option class="options" value="6">6 cuotas (12% interes)</option>
-                        <option class="options" value="9">9 cuotas (15% interes)</option>
-                        <option class="options" value="12">12 cuotas (21% interes)</option>
-                    </select>
+                        <label class="label label-fees" for="fees">Fees</label>
+                        <select class="select" name="fees" id="fees" required="">
+                            <option class="options" selected value="">Cuotas</option>
+                            <option class="options" value="1">1 cuota (sin interes)</option>
+                            <option class="options" value="3">3 cuotas (5% interes)</option>
+                            <option class="options" value="6">6 cuotas (12% interes)</option>
+                            <option class="options" value="9">9 cuotas (15% interes)</option>
+                            <option class="options" value="12">12 cuotas (21% interes)</option>
+                        </select>
+                    </div>
 
-                    <label class="label label-username" for="username">Name</label>
-                    <input class="input user-name" type="text" name="username" placeholder="Full name" id="username" required="" autocomplete="off">
-
-                    <label class="label label-mail" for="email">E-mail</label>
-                    <input class="input email" type="email" placeholder="example@mail.com" id="email" required="" autocomplete="off">
-
-                    <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
+                    <div class="section-2">
+                        <label class="label label-username" for="username">Name</label>
+                        <input class="input user-name" type="text" name="username" placeholder="Full name" id="username" required="" autocomplete="off">
+    
+                        <label class="label label-mail" for="email">E-mail</label>
+                        <input class="input email" type="email" placeholder="example@mail.com" id="email" required="" autocomplete="off">
+    
+                        <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
+                    </div>
 
                     <input type="submit" class="submit-btn" value="Enviar">
                 </form>

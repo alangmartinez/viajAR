@@ -220,10 +220,18 @@ main .search-container .search {
   border: none;
   outline: none;
   font-size: 1.3rem;
-  color: #555;
+  color: #333;
+  border-radius: 0;
+  outline: none;
 }
-main .search-container .search:active {
+main .search-container .search:focus {
   background-color: transparent;
+}
+main .search-container .search:focus ~ .fa-search {
+  color: #000;
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 @media screen and (min-width: 1280px) {
   main .search-container .search {
@@ -237,6 +245,11 @@ main .search-container .fa-search {
   margin-left: auto;
   font-size: 1.5rem;
   cursor: pointer;
+  color: #999;
+  transform: translateX(80px);
+  opacity: 0;
+  visibility: hidden;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) all 350ms;
 }
 @media screen and (min-width: 1280px) {
   main .search-container .fa-search {
@@ -395,6 +408,12 @@ main .main-container .form-container {
   height: 100%;
   width: 100%;
 }
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container {
+    width: 50%;
+    margin: auto;
+  }
+}
 main .main-container .form-container .form {
   width: 100%;
   padding: 2rem;
@@ -409,13 +428,29 @@ main .main-container .form-container .form {
 @media screen and (min-width: 1280px) {
   main .main-container .form-container .form {
     padding: 4.2rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    row-gap: 2rem;
   }
+}
+main .main-container .form-container .form .section-1 {
+  width: 100%;
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+main .main-container .form-container .form .section-2 {
+  width: 100%;
+  grid-row: 1/2;
+  grid-column: 1/2;
 }
 main .main-container .form-container .form .label {
   font-family: "Source Code Pro", monospace;
   margin-bottom: 0.7rem;
   color: rgba(0, 0, 0, 0.7);
   font-size: 14px;
+  display: block;
 }
 main .main-container .form-container .form .label-fees::after, main .main-container .form-container .form .label-username::after, main .main-container .form-container .form .label-mail::after {
   content: " *";
@@ -447,6 +482,11 @@ main .main-container .form-container .form .input {
   font-size: 14px;
   color: #333;
 }
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .input {
+    width: 100%;
+  }
+}
 main .main-container .form-container .form .input::-moz-placeholder {
   color: #555;
 }
@@ -461,6 +501,11 @@ main .main-container .form-container .form .input:focus {
 }
 main .main-container .form-container .form .text-area {
   resize: none;
+}
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .text-area {
+    margin: 0;
+  }
 }
 main .main-container .form-container .form .text-area::-moz-placeholder {
   color: #111;
@@ -481,6 +526,7 @@ main .main-container .form-container .form .submit-btn {
   border-radius: 5px;
   background-color: #fff;
   transition: ease 150ms all;
+  grid-column: 1/3;
 }
 main .main-container .form-container .form .submit-btn:hover {
   color: #fff;
@@ -497,6 +543,8 @@ main .main-container .form-container .form .submit-btn:hover {
 main .main-container .form-container .form p {
   margin: 0;
   margin-top: 1.42rem;
+  width: 100%;
+  text-align: center;
 }
 
 .carousel {
@@ -505,7 +553,6 @@ main .main-container .form-container .form p {
 }
 
 .red {
-  text-align: center;
   color: #dc0101;
   font-family: sans-serif;
   margin-top: 1.2rem;
@@ -539,12 +586,6 @@ main .main-container .form-container .form p {
   text-transform: uppercase;
   background-color: #fff;
   border: 1px solid #000;
-}
-
-.text-input {
-  display: block;
-  margin: auto;
-  height: 2rem;
 }
 
 .popup {
@@ -607,21 +648,6 @@ main .main-container .form-container .form p {
   margin-top: 1.5rem;
   color: #333;
   font-family: "Source Code Pro", monospace;
-}
-
-.credit-card-container {
-  width: 100%;
-  padding: 4rem 2rem;
-}
-.credit-card-container .credit-card {
-  width: 100%;
-  height: 200px;
-  background-color: #000;
-  border-radius: 10px;
-}
-
-.mayus {
-  text-transform: uppercase;
 }
 
 .cart-container {
