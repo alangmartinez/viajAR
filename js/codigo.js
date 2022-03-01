@@ -1,8 +1,6 @@
-const destination = document.querySelector(".destination");
 const email = document.querySelector(".email");
 const submitBtn = document.querySelector(".submit-btn");
 const userName = document.querySelector(".user-name");
-const price = document.getElementById("price"),
 btnGuardar = document.getElementById("btn-guardar"),
 btnMostrar = document.getElementById("btn-mostrar"),
 textInput = document.getElementById("text-input"),
@@ -11,23 +9,11 @@ popup = document.getElementById("popup"),
 form = document.getElementById("form");
 
 // Se ejecuta el evento cuando la ventana esta cargando.
-onload = ()=>{
-    // Scripting
-    const carousel = document.querySelector(".carousel")
-    carousel.classList.add("visible");
-};
+const carousel = document.querySelector(".carousel")
+onload = ()=> carousel.classList.add("visible");
 
-class Trips {
-    constructor(destination, price, fees, name, mail){
-        this.destination = destination;
-        this.price = Number(price);
-        this.fees = Number(fees);
-        this.name = name;
-        this.mail = mail
-        }
-}
-
-mostrar = ()=>{
+const btnMenu = document.getElementById("btn-menu");
+btnMenu.addEventListener("click", ()=>{
         const list = document.querySelector(".mobile-menu");
         const menuBtn = document.querySelector(".menu-btn");
         clase = menuBtn.firstElementChild.getAttribute("class");
@@ -39,12 +25,18 @@ mostrar = ()=>{
             menuBtn.firstElementChild.removeAttribute("class", "fas fa-times");
             menuBtn.firstElementChild.setAttribute("class", "fas fa-bars");
         }
+    });
+    
+    const tripsContainer = document.querySelector(".trips-container");
+    for(let index = 0; index < trips.length; index++){
+        tripsContainer.innerHTML+= `<div class="trip-container ${trips[index].img}">
+        <div class="trip">
+            <h2 class="trip_title">${trips[index].destination}</h2>
+            <p class="trip_price">$${trips[index].price}</p>
+        </div>
+        <button id="agregar-viaje">Agregar !</button>
+    </div>`
     }
-
-const financiacion = (precioViaje, viaje)=>{
-    destination.value = viaje;
-    price.value = precioViaje;
-}
 
 const respuesta = document.createElement("p");
 const carrito = [];
@@ -57,23 +49,13 @@ submitBtn.addEventListener("click", (e)=> {
         respuesta.classList.add("red");
         respuesta.classList.remove("green");
         form.appendChild(respuesta);
-    }
-    else{
-        let trip = new Trips(
-            destination.value,
-            price.value,
-            fees.value,
-            userName.value,
-            email.value
-            );
-            
+    }else{   
             respuesta.textContent = error[1];
             respuesta.classList.add("green");
             respuesta.classList.remove("red");
             form.appendChild(respuesta);
             popup.classList.add("aparecer");
             carrito.push(trip);
-            agregarCarrito();
     }
 });
 formCheck = ()=> {
@@ -111,37 +93,35 @@ formCheck = ()=> {
         return error;
 };
 
-const verDatosBtn = document.createElement("button");
-verDatosBtn.textContent = "Ver Datos";
-verDatosBtn.classList.add("button");
-popup.appendChild(verDatosBtn);
-
-const datos = document.createElement("p");
-
-// Evento click en button "Ver Datos"
-verDatosBtn.onclick = ()=> {
-    //Scripts
-    if(datos.textContent != "") datos.textContent = ""
-    else {
-        datos.textContent = `Destino: ${destination.value}.
-    Precio: ${price.value}.
-    Cuotas: ${fees.value}.
-    Nombre: ${userName.value}.
-    E-mail: ${email.value}`
-    }
-    popup.appendChild(datos);
-}
-
 closePopupBtn.onclick = ()=> popup.classList.remove("aparecer");
+
+const agregarViaje = document.querySelectorAll("#agregar-viaje");
+const alertAgregado = document.querySelector(".alert-success");
+console.log(agregarViaje);
+
+agregarViaje.forEach((button)=>{
+    button.addEventListener("click", ()=> {
+        alertAgregado.classList.add("fade-in-top");
+        // Se remueve fade in, luego de 2500ms
+        setTimeout(()=>{
+            alertAgregado.classList.remove("fade-in-top")
+        },2500);
+        // agregar objeto al array "carrito", el objeto debe tener destino y precio
+        agregarCarrito();
+    })
+})
+
 
 const cartContainer = document.createElement("div");
 const agregarCarrito = ()=> {
     // Scripts
-    document.body.append(cartContainer)
-    cartContainer.classList.add("cart-container");
-    cartContainer.innerHTML = `<i class="fas fa-luggage-cart"></i>
-    <div class="cart-indicator">${carrito.length}</div>`;
-    cartContainer.classList.add("fade-in-left");
+    if(carrito.length > 0){
+        document.body.append(cartContainer)
+        cartContainer.classList.add("cart-container");
+        cartContainer.innerHTML = `<a><i class="fas fa-luggage-cart"></i>
+        <div class="cart-indicator">${carrito.length}</div></a>`;
+        cartContainer.classList.add("fade-in-left");
+    }
 }
 
 const arrowContainer = document.createElement("div");
@@ -155,11 +135,4 @@ if(window.innerWidth > 1280){
             arrowContainer.classList.add("fade-in-right");
         }else{arrowContainer.classList.remove("fade-in-right")}
     })
-}
-
-class Persona {
-    constructor(nombre,instagram){
-        this.nombre = nombre;
-        this.instagram = instagram
-    }
 }
