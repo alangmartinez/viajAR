@@ -68,7 +68,7 @@ body{
         align-items: center;
         list-style: none;
         height: 100vh;
-        width: 70%;
+        width: 80%;
         gap: 2.5rem;
         letter-spacing: 2px;
         background-color: $color-black;
@@ -113,6 +113,35 @@ body{
         }
     }
 }
+.login-form{
+    background-color: rgba($color: #000000, $alpha: .9);
+    border-radius: $border-radius;
+    padding: 2rem;
+    width: 40%;
+    box-shadow: $shadow-1;
+    position: fixed;
+    top: 5rem;
+    z-index: 200;
+
+    .login-form-title{
+        color: $color-white;
+        font-size: 25px;
+        margin: 0;
+        padding: 0;
+    }
+    hr{
+        opacity: .9;
+        background-color: $color-white;
+        margin: .8rem 0;
+        margin-bottom: 1.5rem;
+    }
+    .mb-3{
+        .form-label{
+            color: $color-white;
+            font-size: 15px;
+        }
+    }
+}
 .nav-desktop{
     display: none;
     position: relative;
@@ -126,7 +155,7 @@ body{
         align-items: center;
         margin: 0;
         padding: 1rem 3rem;
-        gap: 3.6rem;
+        gap: 3rem;
         width: 100%;
         list-style: none;
 
@@ -330,7 +359,7 @@ main{
         ._rio_janeiro{
             background-image: url(../assets/img/rio-janeiro-desktop.jpg);
         }
-        .trip-container{
+        .trip{
             display: none;
             width: 100%;
             height: 800px;
@@ -342,7 +371,7 @@ main{
                 display: block;
             }
     
-            .trip{
+            .trip-content{
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
@@ -403,7 +432,7 @@ main{
 
             .form{
                 width: 100%;
-                padding: 2rem;
+                padding: 3rem 2.5rem;
                 background-color: rgba($color: #fff, $alpha: .9);
                 margin: auto;
                 display: flex;
@@ -450,6 +479,7 @@ main{
                     font-size: 13px;
                     margin-bottom: 2rem;
                     color: rgba($color: #000000, $alpha: .7);
+                    width: 100%;
     
                     .options{
                         font-family: 'Source Code Pro', monospace;
@@ -471,6 +501,7 @@ main{
                     font-family: 'Source Code Pro', monospace;
                     font-size: 14px;
                     color: #333;
+                    width: 100%;
 
                     @media screen and (min-width: 1280px) {
                         width: 100%;
@@ -513,7 +544,7 @@ main{
                         border-radius: 5px;
                     }
                     @media screen and (min-width: 1280px) {
-                        padding: 1.2rem 3.1rem;
+                        padding: .9rem 2.5rem;
                         width: auto;
                     }
                 }
@@ -526,11 +557,82 @@ main{
             }
         }
     }
-}
+    .modal-cart{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 45%;
+        background-color: rgba(0, 0, 0, .9);
+        border-radius: $border-radius;
+        padding: 2.5rem 2.5rem;
 
-.carousel{
-    opacity: 0;
-    transition: ease all 2s;
+        .fa-times{
+            color: $color-white;
+            font-size: 24px;
+            position: absolute;
+            right: 1.7rem;
+            top: 1.7rem;
+            cursor: pointer;
+
+            &:hover{
+                color: rgb(187, 23, 50);
+            }
+        }
+        .modal-cart-title{
+            color: $color-white;
+            margin: 0;
+            padding: 0;
+            font-size: 25px;
+            margin-bottom: 1rem;
+            margin-top: .5rem;
+
+            .fa-luggage-cart{
+                margin-right: .5rem;
+                line-height: unset;
+            }
+        }
+
+        hr{
+            opacity: 1;
+            background-color: $color-white;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        .modal-cart-content{
+            padding: 0 1rem;
+            width: 100%;
+            margin-top: .5rem;
+
+            .trip{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr) auto;
+                width: 100%;
+
+                p{
+                    color: $color-white;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 18px;
+                    font-family: 'PT Sans Narrow', sans-serif;
+                    text-align: start;
+                }
+                .fa-trash{
+                    margin: 0;
+                    padding: 0;
+                    color: $color-white;
+                    cursor: pointer;
+                    text-align: end;
+                    line-height: unset;
+
+                    &:hover{
+                        color: rgb(187, 23, 50);
+                    }
+                }
+            }
+        }
+    }
 }
 .red{
     color: rgb(220, 1, 1);
@@ -633,8 +735,8 @@ main{
     background-color: rgba($color: #000000, $alpha: .9);
     box-shadow: $shadow-1;
     position: fixed;
-    bottom: 1rem;
-    left: 1rem;
+    bottom: 2.5rem;
+    left: 2.5rem;
     height: 5rem;
     width: 5rem;
     display: flex;
@@ -644,7 +746,7 @@ main{
     opacity: 0;
     visibility: hidden;
     transform: translateX(-100%);
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 900ms all;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 500ms all;
     
     .fa-luggage-cart{
         color: $color-white;
@@ -662,35 +764,74 @@ main{
         margin-top: -.5rem;
     }
 }
-.aparecer{
-    opacity: 1;
-    visibility: visible;
-}
-.modal-cart{
-    position: fixed;
-    top: 1.8rem;
-    left: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    .fa-luggage-cart-fixed{
-        color: $color-black;
-        font-size: 1.6rem;
+
+.cart{
+    @media screen and (min-width: 1280px) {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        max-height: 90%;
+        overflow-y: scroll;
+        width: 60%;
+        background-color: rgba($color: #000000, $alpha: .9);
+        border-radius: $border-radius;
+        padding: 3rem 2rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms all;
     }
-    .cart-indicator-fixed{
-        background-color: rgb(189, 33, 27);
-        border-radius: 50%;
-        padding: 5px 11px;
-        box-shadow: $shadow-1;
-        position: absolute;
-        top: 0;
-        right: 0;
+}
+.cart-modal{
+    width: 40%;
+    height: 10rem;
+    border-radius: $border-radius;
+    box-shadow: $shadow-1;
+    background-color: rgba($color: #000000, $alpha: .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    // transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 2rem;
+
+    &__title{
+        font-size: 20px;
         color: $color-white;
-        margin-top: -1.3rem;
-        margin-right: -1.3rem;
-        font-size: .7rem;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+    }
+    hr{
+        opacity: 1;
+        margin-top: .5rem;
+        background-color: $color-white;
+    }
+    &__products-in-cart{
+        .product{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            
+            .product-img{
+                width: 4rem;
+                height: 3.5rem;
+                border-radius: .5rem;
+                margin: 0;
+                padding: 0;
+            }
+            .product-details{
+                margin: 0;
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                color: $color-white;
+            }
+        }
     }
 }
 .arrow-container{
@@ -761,4 +902,7 @@ main{
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+}
+.hidden{
+    display: none;
 }

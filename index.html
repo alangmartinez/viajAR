@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     <!-- Hojas de Estilos -->
     <link rel="stylesheet" href="sass/normalize.css">
     <link rel="stylesheet" href="sass/estilos.css">
@@ -23,7 +28,8 @@
     <header class="header">
         <nav class="nav-mobile">
             <div class="menu-btn">
-                <i class="fas fa-bars" id="btn-menu"></i>
+                <i class="fas fa-bars" id="btn-menu-bars"></i>
+                <i class="fas fa-times hidden" id="btn-menu-times"></i>
             </div>
             <ul class="list mobile-menu">
                     <a class="link" href="index.html">
@@ -47,12 +53,47 @@
         <nav class="nav-desktop">
             <a href="index.html"><h2 class="title">viaj</h2></a>
             <ul class="list menu-desktop" id="menu-desktop">
-                <li class="list-item"><a href="index.html"><i class="fas fa-home icons"></i>Home</a></li>
-                <li class="list-item"><a href="#"><i class="fas fa-plane-departure icons"></i>Viajes</a></li>
+                <li class="list-item"><a href="#"><i class="fas fa-user-alt"></i>Profile</a></li>
+                <li class="list-item"><a href="#"><i class="fas fa-plane-departure icons"></i>Trips</a></li>
                 <li class="list-item"><a href="#"><i class="fas fa-clipboard icons"></i>About Us</a></li>
                 <li class="list-item"><a href="#"><i class="far fa-question-circle icons"></i>Help</a></li>
             </ul>
         </nav>
+        <div class="popup" id="popup">
+            <i class="fas fa-times" id="close-popup-btn"></i>
+            <h3>¡Se ha agregado correctamente al carrito!</h3>
+        </div>
+        <div class="cart-modal hidden">
+            <h3 class="cart-modal__title">Carrito de Compras</h3>
+            <hr>
+            <div class="cart-modal__products-in-cart">
+                <div class="product">
+                    <img class="product-img" src="assets/img/buenos-aires-desktop.jpg" alt="product 1">
+                    <div class="product-details">
+                        <p class="destination">Buenos Aires</p>
+                        <p class="price">$70,500</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="login-form hidden">
+            <h5 class="login-form-title">Login :</h5>
+            <hr>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
     </header>
     <main>
         <div class="search-container">
@@ -116,7 +157,7 @@
                         <label class="label label-destination" for="destination">Destination</label>
                         <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination" required="">
 
-                        <label class="label label-price" for="price">Price</label>
+                        <label class="label label-price" for="price">Price (ARS$)</label>
                         <input class="input price" type="text" name="price" id="price" placeholder="Price">
 
                         <label class="label label-fees" for="fees">Fees</label>
@@ -144,16 +185,20 @@
                 </form>
             </section>
         </section>
-        <div class="popup" id="popup">
-            <i class="fas fa-times" id="close-popup-btn"></i>
-            <h3>¡Se ha agregado correctamente al carrito!</h3>
+        <div class="modal-cart hidden" id="modal-cart">
+            <i class="fas fa-times" id="btnCloseModalCart"></i>
+            <h5 class="modal-cart-title"><i class="fas fa-luggage-cart"></i>Carrito :</h5>
+            <hr>
+            <div class="modal-cart-content" id="modalCartContent">
+            </div>
         </div>
     </main>  
     <footer>
         <p>Copyright © 2021 | All right reserved.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/menu.js"></script>
     <script src="js/trips.js"></script>
-    <script src="js/codigo.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

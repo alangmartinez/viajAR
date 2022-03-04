@@ -84,7 +84,7 @@ body {
   align-items: center;
   list-style: none;
   height: 100vh;
-  width: 70%;
+  width: 80%;
   gap: 2.5rem;
   letter-spacing: 2px;
   background-color: #000;
@@ -129,6 +129,33 @@ body {
   vertical-align: bottom;
 }
 
+.login-form {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 40%;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 5rem;
+  z-index: 200;
+}
+.login-form .login-form-title {
+  color: #fff;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+.login-form hr {
+  opacity: 0.9;
+  background-color: #fff;
+  margin: 0.8rem 0;
+  margin-bottom: 1.5rem;
+}
+.login-form .mb-3 .form-label {
+  color: #fff;
+  font-size: 15px;
+}
+
 .nav-desktop {
   display: none;
   position: relative;
@@ -145,7 +172,7 @@ body {
   align-items: center;
   margin: 0;
   padding: 1rem 3rem;
-  gap: 3.6rem;
+  gap: 3rem;
   width: 100%;
   list-style: none;
 }
@@ -342,7 +369,7 @@ main .main-container ._havana {
 main .main-container ._rio_janeiro {
   background-image: url(../assets/img/rio-janeiro-desktop.jpg);
 }
-main .main-container .trip-container {
+main .main-container .trip {
   display: none;
   width: 100%;
   height: 800px;
@@ -352,17 +379,17 @@ main .main-container .trip-container {
   position: relative;
 }
 @media screen and (min-width: 1280px) {
-  main .main-container .trip-container {
+  main .main-container .trip {
     display: block;
   }
 }
-main .main-container .trip-container .trip {
+main .main-container .trip .trip-content {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
 }
-main .main-container .trip-container .trip_title {
+main .main-container .trip .trip-content_title {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -372,13 +399,13 @@ main .main-container .trip-container .trip_title {
   margin-bottom: 1rem;
   text-shadow: 2px 4px 5px #000000;
 }
-main .main-container .trip-container .trip_price {
+main .main-container .trip .trip-content_price {
   font-size: 70px;
   text-shadow: 2px 4px 5px #000000;
   margin-left: 13rem;
   color: #fff;
 }
-main .main-container .trip-container button {
+main .main-container .trip button {
   background: #FEBA0B;
   padding: 1rem 40px;
   cursor: pointer;
@@ -395,12 +422,12 @@ main .main-container .trip-container button {
   right: 5rem;
   transition: ease 150ms all;
 }
-main .main-container .trip-container button:hover {
+main .main-container .trip button:hover {
   color: #FEBA0B;
   background-color: #fff;
   transform: scale(1.05);
 }
-main .main-container .trip-container button:hover .trip-container {
+main .main-container .trip button:hover .trip-container {
   filter: grayscale(100%);
 }
 main .main-container .form-container {
@@ -416,7 +443,7 @@ main .main-container .form-container {
 }
 main .main-container .form-container .form {
   width: 100%;
-  padding: 2rem;
+  padding: 3rem 2.5rem;
   background-color: rgba(255, 255, 255, 0.9);
   margin: auto;
   display: flex;
@@ -462,6 +489,7 @@ main .main-container .form-container .form .select {
   font-size: 13px;
   margin-bottom: 2rem;
   color: rgba(0, 0, 0, 0.7);
+  width: 100%;
 }
 main .main-container .form-container .form .select .options {
   font-family: "Source Code Pro", monospace;
@@ -481,6 +509,7 @@ main .main-container .form-container .form .input {
   font-family: "Source Code Pro", monospace;
   font-size: 14px;
   color: #333;
+  width: 100%;
 }
 @media screen and (min-width: 1280px) {
   main .main-container .form-container .form .input {
@@ -536,7 +565,7 @@ main .main-container .form-container .form .submit-btn:hover {
 }
 @media screen and (min-width: 1280px) {
   main .main-container .form-container .form .submit-btn {
-    padding: 1.2rem 3.1rem;
+    padding: 0.9rem 2.5rem;
     width: auto;
   }
 }
@@ -546,10 +575,74 @@ main .main-container .form-container .form p {
   width: 100%;
   text-align: center;
 }
-
-.carousel {
-  opacity: 0;
-  transition: ease all 2s;
+main .modal-cart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  padding: 2.5rem 2.5rem;
+}
+main .modal-cart .fa-times {
+  color: #fff;
+  font-size: 24px;
+  position: absolute;
+  right: 1.7rem;
+  top: 1.7rem;
+  cursor: pointer;
+}
+main .modal-cart .fa-times:hover {
+  color: #bb1732;
+}
+main .modal-cart .modal-cart-title {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+main .modal-cart .modal-cart-title .fa-luggage-cart {
+  margin-right: 0.5rem;
+  line-height: unset;
+}
+main .modal-cart hr {
+  opacity: 1;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+main .modal-cart .modal-cart-content {
+  padding: 0 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+main .modal-cart .modal-cart-content .trip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  width: 100%;
+}
+main .modal-cart .modal-cart-content .trip p {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: "PT Sans Narrow", sans-serif;
+  text-align: start;
+}
+main .modal-cart .modal-cart-content .trip .fa-trash {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  text-align: end;
+  line-height: unset;
+}
+main .modal-cart .modal-cart-content .trip .fa-trash:hover {
+  color: #bb1732;
 }
 
 .red {
@@ -655,8 +748,8 @@ main .main-container .form-container .form p {
   background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 2.5rem;
+  left: 2.5rem;
   height: 5rem;
   width: 5rem;
   display: flex;
@@ -666,7 +759,7 @@ main .main-container .form-container .form p {
   opacity: 0;
   visibility: hidden;
   transform: translateX(-100%);
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 900ms all;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 500ms all;
 }
 .cart-container .fa-luggage-cart {
   color: #fff;
@@ -684,36 +777,70 @@ main .main-container .form-container .form p {
   margin-top: -0.5rem;
 }
 
-.aparecer {
-  opacity: 1;
-  visibility: visible;
+@media screen and (min-width: 1280px) {
+  .cart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    max-height: 90%;
+    overflow-y: scroll;
+    width: 60%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms all;
+  }
 }
 
-.modal-cart {
-  position: fixed;
-  top: 1.8rem;
-  left: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modal-cart .fa-luggage-cart-fixed {
-  color: #000;
-  font-size: 1.6rem;
-}
-.modal-cart .cart-indicator-fixed {
-  background-color: #bd211b;
-  border-radius: 50%;
-  padding: 5px 11px;
+.cart-modal {
+  width: 40%;
+  height: 10rem;
+  border-radius: 10px;
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
+  z-index: 100;
+  padding: 2rem;
+}
+.cart-modal__title {
+  font-size: 20px;
   color: #fff;
-  margin-top: -1.3rem;
-  margin-right: -1.3rem;
-  font-size: 0.7rem;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+.cart-modal hr {
+  opacity: 1;
+  margin-top: 0.5rem;
+  background-color: #fff;
+}
+.cart-modal__products-in-cart .product {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.cart-modal__products-in-cart .product .product-img {
+  width: 4rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+.cart-modal__products-in-cart .product .product-details {
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: #fff;
 }
 
 .arrow-container {
@@ -791,4 +918,8 @@ main .main-container .form-container .form p {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
+}
+
+.hidden {
+  display: none;
 }/*# sourceMappingURL=estilos.css.map */
