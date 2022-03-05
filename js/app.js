@@ -68,12 +68,12 @@ function showCart(tripToAdd) {
     <i class="fas fa-trash" id="btnRemoveTrip${tripToAdd.id}"></i>`;
     modalCartContent.appendChild(div);
 
-    // let totalPrice = 0;
-    // totalPrice = tripToAdd.price;
-    // let p = document.createElement("p");
-    // p.className = "total-price";
-    // p.textContent = `Precio Total: $${totalPrice}`
-    // modalCart.appendChild(p);
+    const modalCartFooter = document.querySelector(".modal-cart-footer");
+    let totalPrice = `${parseFloat(tripToAdd.price) * tripToAdd.count},000`;
+    let p = document.createElement("p");
+    p.className = "total-price";
+    p.textContent = `Precio Total: $${totalPrice}`
+    modalCartFooter.appendChild(p);
 
     const btnRemoveTrip = document.getElementById(`btnRemoveTrip${tripToAdd.id}`);
     btnRemoveTrip.addEventListener("click", ()=>{

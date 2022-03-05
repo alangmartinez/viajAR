@@ -440,9 +440,6 @@ main .main-container .trip button:hover {
   background-color: #fff;
   transform: scale(1.05);
 }
-main .main-container .trip button:hover .trip-container {
-  filter: grayscale(100%);
-}
 main .main-container .form-container {
   padding: 1.5rem;
   height: 100%;
@@ -450,7 +447,7 @@ main .main-container .form-container {
 }
 @media screen and (min-width: 1280px) {
   main .main-container .form-container {
-    width: 50%;
+    width: 60%;
     margin: auto;
   }
 }
@@ -469,21 +466,28 @@ main .main-container .form-container .form {
   main .main-container .form-container .form {
     padding: 4.2rem;
     display: grid;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     row-gap: 2rem;
   }
 }
+main .main-container .form-container .form .form-title {
+  width: 100%;
+  text-align: start;
+  text-transform: uppercase;
+  grid-row: 1/2;
+  grid-column: 1/3;
+}
 main .main-container .form-container .form .section-1 {
   width: 100%;
+  grid-row: 2/3;
   grid-column: 2/3;
-  grid-row: 1/2;
 }
 main .main-container .form-container .form .section-2 {
   width: 100%;
-  grid-row: 1/2;
   grid-column: 1/2;
+  grid-row: 2/3;
 }
 main .main-container .form-container .form .label {
   font-family: "Source Code Pro", monospace;
@@ -492,7 +496,12 @@ main .main-container .form-container .form .label {
   font-size: 14px;
   display: block;
 }
-main .main-container .form-container .form .label-fees::after, main .main-container .form-container .form .label-username::after, main .main-container .form-container .form .label-mail::after {
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .label {
+    font-size: 17px;
+  }
+}
+main .main-container .form-container .form .label-fees::after, main .main-container .form-container .form .label-username::after, main .main-container .form-container .form .label-mail::after, main .main-container .form-container .form .label-destination::after {
   content: " *";
   color: #c90404;
 }
@@ -504,10 +513,20 @@ main .main-container .form-container .form .select {
   color: rgba(0, 0, 0, 0.7);
   width: 100%;
 }
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .select {
+    font-size: 15px;
+  }
+}
 main .main-container .form-container .form .select .options {
   font-family: "Source Code Pro", monospace;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.7);
+}
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .select .options {
+    font-size: 16px;
+  }
 }
 main .main-container .form-container .form .input {
   background-color: transparent;
@@ -527,19 +546,20 @@ main .main-container .form-container .form .input {
 @media screen and (min-width: 1280px) {
   main .main-container .form-container .form .input {
     width: 100%;
+    font-size: 17px;
   }
 }
 main .main-container .form-container .form .input::-moz-placeholder {
-  color: #555;
+  color: #777;
 }
 main .main-container .form-container .form .input:-ms-input-placeholder {
-  color: #555;
+  color: #777;
 }
 main .main-container .form-container .form .input::placeholder {
-  color: #555;
+  color: #777;
 }
 main .main-container .form-container .form .input:focus {
-  border-color: #999;
+  border-color: #777;
 }
 main .main-container .form-container .form .text-area {
   resize: none;
@@ -547,16 +567,29 @@ main .main-container .form-container .form .text-area {
 @media screen and (min-width: 1280px) {
   main .main-container .form-container .form .text-area {
     margin: 0;
+    grid-column: 1/3;
+    font-size: 17px;
   }
 }
 main .main-container .form-container .form .text-area::-moz-placeholder {
-  color: #111;
+  color: #777;
 }
 main .main-container .form-container .form .text-area:-ms-input-placeholder {
-  color: #111;
+  color: #777;
 }
 main .main-container .form-container .form .text-area::placeholder {
-  color: #111;
+  color: #777;
+}
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .text-area::-moz-placeholder {
+    font-size: 17px;
+  }
+  main .main-container .form-container .form .text-area:-ms-input-placeholder {
+    font-size: 17px;
+  }
+  main .main-container .form-container .form .text-area::placeholder {
+    font-size: 17px;
+  }
 }
 main .main-container .form-container .form .submit-btn {
   width: 45%;
@@ -570,17 +603,18 @@ main .main-container .form-container .form .submit-btn {
   transition: ease 150ms all;
   grid-column: 1/3;
 }
+@media screen and (min-width: 1280px) {
+  main .main-container .form-container .form .submit-btn {
+    padding: 1.3rem 3rem;
+    width: auto;
+    font-size: 17px;
+  }
+}
 main .main-container .form-container .form .submit-btn:hover {
   color: #fff;
   background-color: #000;
   border: 1px solid transparent;
   border-radius: 5px;
-}
-@media screen and (min-width: 1280px) {
-  main .main-container .form-container .form .submit-btn {
-    padding: 0.9rem 2.5rem;
-    width: auto;
-  }
 }
 main .main-container .form-container .form p {
   margin: 0;
@@ -664,13 +698,39 @@ main .modal-cart .modal-cart-content .trip .fa-trash {
 main .modal-cart .modal-cart-content .trip .fa-trash:hover {
   color: #bb1732;
 }
-main .modal-cart .total-price {
+main .modal-cart .modal-cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+main .modal-cart .modal-cart-footer .total-price {
   color: #fff;
-  margin: 0;
+  margin: auto;
+  margin-left: 1rem;
   padding: 0;
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 18px;
-  margin-top: 2.5rem;
+  order: 1;
+}
+main .modal-cart .modal-cart-footer .btn-modal-cart {
+  order: 2;
+  background: rgba(254, 186, 11, 0.95);
+  padding: 0.9rem 1.8rem;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  font-weight: 300;
+  border: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: ease 150ms all;
+}
+main .modal-cart .modal-cart-footer .btn-modal-cart:hover {
+  color: #FEBA0B;
+  background-color: #fff;
+  transform: scale(1.03);
 }
 
 .red {

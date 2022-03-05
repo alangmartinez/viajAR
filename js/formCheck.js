@@ -20,14 +20,13 @@ submitBtn.addEventListener("click", (e)=> {
             respuesta.classList.add("green");
             respuesta.classList.remove("red");
             form.appendChild(respuesta);
-            popup.classList.add("aparecer");
     }
 });
 formCheck = ()=> {
     let error = [];
     if(destination.value == ""){
         error[0] = true;
-        error[1] = "* Debe seleccionar un destino";
+        error[1] = "* Debe indicar un destino.";
         return error;
     }
     if(fees.value == ""){

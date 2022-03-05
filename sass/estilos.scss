@@ -423,9 +423,6 @@ main{
                     background-color: $color-white;
                     transform: scale(1.05);
                 }
-                &:hover .trip-container{
-                    filter: grayscale(100%);
-                }
             }
         }
         .form-container{
@@ -433,7 +430,7 @@ main{
             height: 100%;
             width: 100%;
             @media screen and (min-width: 1280px) {
-                width: 50%;
+                width: 60%;
                 margin: auto;
             }
 
@@ -450,21 +447,27 @@ main{
                 @media screen and (min-width: 1280px) {
                     padding: 4.2rem;
                     display: grid;
-                    grid-template-rows: 1fr;
+                    grid-template-rows: auto 1fr 1fr auto;
                     grid-template-columns: repeat(2, 1fr);
                     gap: 3rem;
                     row-gap: 2rem;
                 }
-                
+                .form-title{
+                    width: 100%;
+                    text-align: start;
+                    text-transform: uppercase;
+                    grid-row: 1 / 2;
+                    grid-column: 1 / 3;
+                }
                 .section-1{
                     width: 100%;
+                    grid-row: 2 / 3;
                     grid-column: 2 / 3;
-                    grid-row: 1 / 2;
                 }
                 .section-2{
                     width: 100%;
-                    grid-row: 1 / 2;
                     grid-column: 1 / 2;
+                    grid-row: 2 / 3;
                 }
                 .label{
                     font-family: 'Source Code Pro', monospace;
@@ -472,8 +475,11 @@ main{
                     color: rgba($color: #000000, $alpha: .7);
                     font-size: 14px;
                     display: block;
+                    @media screen and (min-width: 1280px) {
+                        font-size: 17px;
+                    }
                 }
-                .label-fees, .label-username, .label-mail{
+                .label-fees, .label-username, .label-mail, .label-destination{
                     &::after{
                         content: " *";
                         color: rgb(201, 4, 4);
@@ -487,11 +493,17 @@ main{
                     margin-bottom: 2rem;
                     color: rgba($color: #000000, $alpha: .7);
                     width: 100%;
+                    @media screen and (min-width: 1280px) {
+                        font-size: 15px;
+                    }
     
                     .options{
                         font-family: 'Source Code Pro', monospace;
                         font-size: 14px;
                         color: rgba($color: #000000, $alpha: .7);
+                        @media screen and (min-width: 1280px) {
+                            font-size: 16px;
+                        }
                     }
                 }
     
@@ -512,23 +524,29 @@ main{
 
                     @media screen and (min-width: 1280px) {
                         width: 100%;
+                        font-size: 17px;
                     }
         
                     &::placeholder{
-                        color: #555;
+                        color: #777;
                     }
                     &:focus{
-                        border-color: #999;
+                        border-color: #777;
                     }
                 }
                 .text-area{
                     resize: none;
                     @media screen and (min-width: 1280px) {
                         margin: 0;
+                        grid-column: 1 / 3;
+                        font-size: 17px;
                     }
         
                     &::placeholder{
-                        color: #111;
+                        color: #777;
+                        @media screen and (min-width: 1280px) {
+                            font-size: 17px;
+                        }
                     }
                 }
                 .submit-btn{
@@ -542,17 +560,17 @@ main{
                     background-color: $color-white;
                     transition: ease 150ms all;
                     grid-column: 1 / 3;
-
+                    @media screen and (min-width: 1280px) {
+                        padding: 1.3rem 3rem;
+                        width: auto;
+                        font-size: 17px;
+                    }
     
                     &:hover{
                         color: $color-white;
                         background-color: $color-black;
                         border: 1px solid transparent;
                         border-radius: 5px;
-                    }
-                    @media screen and (min-width: 1280px) {
-                        padding: .9rem 2.5rem;
-                        width: auto;
                     }
                 }
                 p{
@@ -647,14 +665,41 @@ main{
                 }
             }
         }
-        .total-price{
-            color: $color-white;
-            margin: 0;
-            padding: 0;
-            font-family: 'PT Sans Narrow', sans-serif;
-            font-size: 18px;
-            margin-top: 2.5rem;
+        .modal-cart-footer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
             
+            .total-price{
+                color: $color-white;
+                margin: auto;
+                margin-left: 1rem;
+                padding: 0;
+                font-family: 'PT Sans Narrow', sans-serif;
+                font-size: 18px;
+                order: 1;
+            }
+            .btn-modal-cart{
+                order: 2;
+                background: rgba($color: #FEBA0B, $alpha: .95);
+                padding: .9rem 1.8rem;
+                cursor: pointer;
+                color: $color-white;
+                border-radius: 10px;
+                box-shadow: $shadow-1;
+                font-weight: 300;
+                border: none;
+                font-size: 1rem;
+                text-transform: uppercase;
+                transition: ease 150ms all;
+    
+                &:hover{
+                    color: #FEBA0B;
+                    background-color: $color-white;
+                    transform: scale(1.03);
+                }
+            }
         }
     }
 }

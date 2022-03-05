@@ -152,15 +152,13 @@
             </div>
             <section class="form-container" id="form-container">
                 <form class="form" autocomplete="off" id="form">
+                    <h2 class="form-title">Consulta por otros viajes y financiamiento:</h2>
 
                     <div class="section-1">
                         <label class="label label-destination" for="destination">Destination</label>
-                        <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination" required="">
+                        <input class="input destination" type="text" name="destination" id="destination" placeholder="Destination..." required="">
 
-                        <label class="label label-price" for="price">Price (ARS$)</label>
-                        <input class="input price" type="text" name="price" id="price" placeholder="Price">
-
-                        <label class="label label-fees" for="fees">Fees</label>
+                        <label class="label label-fees" for="fees">Selecciona Financiación:</label>
                         <select class="select" name="fees" id="fees" required="">
                             <option class="options" selected value="">Cuotas</option>
                             <option class="options" value="1">1 cuota (sin interes)</option>
@@ -177,9 +175,9 @@
     
                         <label class="label label-mail" for="email">E-mail</label>
                         <input class="input email" type="email" placeholder="example@mail.com" id="email" required="" autocomplete="off">
-    
-                        <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
                     </div>
+
+                    <textarea class="input text-area" placeholder="Type here..." rows="8"></textarea>
 
                     <input type="submit" class="submit-btn" value="Enviar">
                 </form>
@@ -190,6 +188,9 @@
             <h5 class="modal-cart-title"><i class="fas fa-luggage-cart"></i>Carrito :</h5>
             <hr>
             <div class="modal-cart-content" id="modalCartContent">
+            </div>
+            <div class="modal-cart-footer">
+                <button class="btn-modal-cart">Pagar !</button>
             </div>
         </div>
     </main>  
