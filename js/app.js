@@ -112,6 +112,7 @@ function showCartIcon (){
         <div class="cart-indicator">${cart.length}</div></a>`;
         cartIconContainer.classList.add("fade-in-left");
     }else{
+        // Hidden modal cart & cart icon
         cartIconContainer.classList.remove("fade-in-left");
         modalCart.classList.add("hidden");
     }

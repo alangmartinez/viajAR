@@ -1,5 +1,54 @@
 footer {
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  height: 7.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  border-radius: 25px 25px 0 0;
+  transition: ease-in-out all 450ms;
+}
+footer:hover {
+  height: 12rem;
+}
+footer:hover .social-media {
+  height: unset;
+  opacity: 1;
+}
+footer .fa-chevron-up {
+  position: absolute;
+  top: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  text-shadow: 2px 4px 5px #000000;
+  font-size: 50px;
+  cursor: pointer;
+}
+footer .social-media {
+  position: absolute;
+  top: 3.5rem;
+  right: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  height: 0;
+  overflow-y: hidden;
+  opacity: 0;
+  transition: ease-in-out all 500ms;
+}
+footer .social-media i {
+  line-height: unset;
+  color: #fff;
+  font-size: 40px;
+}
+footer .social-media i:hover {
+  color: #FEBA0B;
 }
 footer p {
   text-align: center;
@@ -7,10 +56,17 @@ footer p {
   font-family: sans-serif;
   font-size: 13px;
   text-shadow: 2px 4px 5px #000000;
+  letter-spacing: 1px;
+  font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+@media screen and (min-width: 1280px) {
+  footer p {
+    font-size: 17px;
+  }
 }
 footer p::after {
   content: " Alan Martinez.";
-  color: #fff;
+  color: #FEBA0B;
 }
 
 * {
@@ -177,6 +233,7 @@ body {
   list-style: none;
 }
 .nav-desktop .menu-desktop .list-item {
+  font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1.8rem;
   text-decoration: none;
   margin: 0;
@@ -187,17 +244,13 @@ body {
 }
 .nav-desktop .menu-desktop .list-item:hover {
   transform: scale(1.1);
-  border-bottom: 2px solid #fff;
 }
 .nav-desktop .menu-desktop .list-item a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.92);
   text-shadow: 2px 4px 5px #000000;
   margin: 0;
-}
-.nav-desktop .menu-desktop .list-item a:hover {
-  color: #fff;
-  filter: brightness(100%);
+  font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 .nav-desktop .menu-desktop .list-item a i {
   margin-right: 0.5rem;
@@ -616,8 +669,8 @@ main .main-container .form-container .form .submit-btn:hover {
   border: 1px solid transparent;
   border-radius: 5px;
 }
-main .main-container .form-container .form p {
-  margin: 0;
+main .main-container .form-container .form .respuesta {
+  margin: auto;
   margin-top: 1.42rem;
   width: 100%;
   text-align: center;

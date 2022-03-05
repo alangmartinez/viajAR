@@ -6,6 +6,7 @@ const destination = document.getElementById("destination");
 const price = document.getElementById("price");
 
 const respuesta = document.createElement("p");
+respuesta.className = "respuesta"
 submitBtn.addEventListener("click", (e)=> {
     // Scripts
     e.preventDefault();

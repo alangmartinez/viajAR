@@ -160,6 +160,7 @@ body{
         list-style: none;
 
         .list-item{
+            font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
             font-size: 1.8rem;
             text-decoration: none;
             margin: 0;
@@ -170,7 +171,6 @@ body{
 
             &:hover{
                 transform: scale(1.1);
-                border-bottom: 2px solid $color-white;
             }
 
             a{
@@ -178,11 +178,7 @@ body{
                 color: rgba($color: #fff, $alpha: .92);
                 text-shadow: $txt-shadow;
                 margin: 0;
-
-                &:hover{
-                    color: $color-white;
-                    filter: brightness(100%);
-                }
+                font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
                 i{
                     margin-right: .5rem;
@@ -573,8 +569,8 @@ main{
                         border-radius: 5px;
                     }
                 }
-                p{
-                    margin: 0;
+                .respuesta{
+                    margin: auto;
                     margin-top: 1.42rem;
                     width: 100%;
                     text-align: center;

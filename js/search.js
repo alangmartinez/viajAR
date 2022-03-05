@@ -2,7 +2,7 @@ const searchInput = document.getElementById("searchInput");
 const searchResult = document.getElementById("searchResult");
 
 
-searchInput.addEventListener("input", ()=>{
+searchInput.addEventListener("keyup", ()=>{
     if(searchInput.value.length > 0){
         trips.forEach( trip => {
             let tripDestination = trip.destination;

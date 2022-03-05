@@ -1,14 +1,72 @@
 footer{
     width: 100%;
+    background-color: rgba($color: #000000, $alpha: .85);
+    backdrop-filter: blur(10px);
+    box-shadow: $shadow-1;
+    height: 7.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    border-radius: 25px 25px 0 0;
+    transition: ease-in-out all 450ms;
+
+    &:hover{
+        height: 12rem;
+    }
+    &:hover .social-media{
+        height: unset;
+        opacity: 1;
+    }
+
+    .fa-chevron-up{
+        position: absolute;
+        top: .8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $color-white;
+        text-shadow: $txt-shadow;
+        font-size: 50px;
+        cursor: pointer;
+    }
+    .social-media{
+        position: absolute;
+        top: 3.5rem;
+        right: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        height: 0;
+        overflow-y: hidden;
+        opacity: 0;
+        transition: ease-in-out all 500ms;
+
+        i{
+            line-height: unset;
+            color: $color-white;
+            font-size: 40px;
+
+            &:hover{
+                color: #FEBA0B;
+            }
+        }
+    }
     p{
         text-align: center;
         color: $color-white;
         font-family: sans-serif;
         font-size: 13px;
         text-shadow: $txt-shadow;
+        letter-spacing: 1px;
+        font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        @media screen and (min-width: 1280px) {
+            font-size: 17px;
+        }
+
         &::after{
             content: " Alan Martinez.";
-            color: $color-white;
+            color: #FEBA0B;
         }
     }
 }
