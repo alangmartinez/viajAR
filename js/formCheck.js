@@ -1,8 +1,9 @@
 const email = document.querySelector(".email");
 const submitBtn = document.querySelector(".submit-btn");
 const userName = document.querySelector(".user-name");
-form = document.getElementById("form"),
-destination = document.querySelector(".destination");
+const form = document.getElementById("form");
+const destination = document.getElementById("destination");
+const price = document.getElementById("price");
 
 const respuesta = document.createElement("p");
 submitBtn.addEventListener("click", (e)=> {

@@ -1,63 +1,113 @@
-price = document.querySelector("#price");
 const successfullAddedAlert = document.querySelector(".alert-success");
-const cartContainer = document.createElement("div");
+const cartIconContainer = document.createElement("div");
+const modalCart = document.getElementById("modal-cart");
 
-// Se crea carrito apartir de lo almacenado en el LocalStorage, si no hay nada almacendo carrito = array(vacio)
+
+// Cart is created form what we have storage in LS, if there is nothing storage:  cart = array[];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.forEach(element => {
+    // If the cart already have items inside, it will show them on the modal cart
+    showCart(element);
+});
 
-// Se agregan dinamicamente los viajes al DOM
+// Trips are dynamically added to the DOM
 const tripsContainer = document.querySelector(".trips-container");
+
+showTrips(trips);
 
 function showTrips(array) {
     for (const trip of array) {
-        tripsContainer.innerHTML+= `<div class="trip ${trip.img}">
+        let div = document.createElement("div");
+        div.className = `trip ${trip.img}`;
+        div.innerHTML = `
         <div class="trip-content">
         <h2 class="trip-content_title">${trip.destination}</h2>
         <p class="trip-content_price">$${trip.price}</p>
         </div>
-        <button id="btnAddToCart${trip.id}" onclick ="addToCart(${trip.id})">Agregar !</button>
-        </div>`
+        <button id="btnAddToCart${trip.id}">Agregar !</button>`;
+        tripsContainer.appendChild(div);
+
+        const btnAddToCart = document.getElementById(`btnAddToCart${trip.id}`);
+        btnAddToCart.addEventListener("click", ()=> {
+            addToCart(trip.id);
+        })
     }
 }
-showTrips(trips);
 
+// Function Add To Cart
 
-// Funcion "Agregar al carrito" 
-
-function addToCart(id){
+function addToCart(id) {
     let repetido = cart.find(search => search.id == id);
     if(repetido){
         repetido.count = repetido.count + 1;
-        document.getElementById(`cantidad${repetido.id}`).innerHTML = `<p id="cantidad${repetido.id}">Cantidad:  ${repetido.count}</p>`
+        document.getElementById(`cantidad${repetido.id}`).textContent = `Pasajes: ${repetido.count}`;
     }else{
-        showAlert();
-        // Agregar objeto al array "cart"
         const tripToAdd = trips.find(trip => trip.id == id);
+        // Add a count value
+        tripToAdd.count = 1;
+        // Object saved in cart & Local Storage
         cart.push(tripToAdd);
-        
-        const modalCartContent = document.getElementById("modalCartContent");
-        
-        modalCartContent.innerHTML +=`<div class="trip">
-        <p class="trip-destination">${tripToAdd.destination}</p>
-        <p class="trip-price">Precio:  ${tripToAdd.price}</p>
-        <p id="cantidad${tripToAdd.id}">Cantidad:  1</p>
-        <i class="fas fa-trash" id="btnRemoveTrip"></i>
-</div>`;
-
-    showCartIcon();
-    saveInLS("cart", JSON.stringify(cart));
-    console.log(cart);
-    
-    const btnRemoveTrip = document.querySelectorAll("#btnRemoveTrip");
-    btnRemoveTrip.forEach(btn => btn.addEventListener("click", ()=> {
-        btn.parentElement.remove();
-        cart = cart.filter(trip => trip.id !== id);
         showCartIcon();
-        console.log(cart);
-        saveInLS("cart", JSON.stringify(cart));
-    }));
+        // Object show in cart
+        showCart(tripToAdd);
+    }
+    showAlert();
+    saveInLS("cart", cart);
+}
+
+// Function Show Cart
+
+function showCart(tripToAdd) {
+    const modalCartContent = document.getElementById("modalCartContent");
+    let div = document.createElement("div");
+    div.className = "trip";
+    div.innerHTML = `<p class="trip-destination">${tripToAdd.destination}</p>
+    <p class="trip-price">Precio:  ${tripToAdd.price}</p>
+    <p id="cantidad${tripToAdd.id}">Pasajes: ${tripToAdd.count}</p>
+    <i class="fas fa-trash" id="btnRemoveTrip"></i>`;
+    modalCartContent.appendChild(div);
+
+    const btnRemoveTrip = document.querySelectorAll("#btnRemoveTrip");
+    btnRemoveTrip.forEach(btn => {
+        btn.addEventListener("click", ()=>{
+            if(tripToAdd.count == 1){
+                // Remove the father element of the trash icon when count is below 1 
+                btn.parentElement.remove();
+                cart = cart.filter(trip => trip.id != tripToAdd.id);
+                // Update Cart
+                saveInLS("cart", cart);
+                // Update Cart Icon
+                showCartIcon();
+            }else{
+                // Reduce the count in 1
+                tripToAdd.count = tripToAdd.count - 1;
+                document.getElementById(`cantidad${tripToAdd.id}`).textContent = `Pasajes: ${tripToAdd.count}`;
+            }
+        })
+    })
+}
+
+// Function Save in Local Storage
+
+function saveInLS(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+// Function Show Cart Icon
+
+function showCartIcon (){
+    // The cart only will show if cart´s length is higher than 0
+    if(cart.length > 0){
+        cartIconContainer.innerHTML = `<a><i class="fas fa-luggage-cart"></i>
+        <div class="cart-indicator">${cart.length}</div></a>`;
+        cartIconContainer.classList.add("fade-in-left");
+    }else{
+        cartIconContainer.classList.remove("fade-in-left");
+        modalCart.classList.add("hidden");
     }
 }
+
+showCartIcon();
 
 // Alert successfull added 
 function showAlert() {
@@ -71,32 +121,9 @@ const btnCloseModalCart = document.getElementById("btnCloseModalCart");
 btnCloseModalCart.addEventListener("click", ()=> modalCart.classList.add("hidden"));
 
 
-// Funcion "Guardar en Local Storage"
-function saveInLS (key, value){
-    localStorage.setItem(key, value);
-}
+document.body.append(cartIconContainer);
+cartIconContainer.classList.add("cart-container");
 
-document.body.append(cartContainer);
-cartContainer.classList.add("cart-container");
-
-// Funcion "Mostrar Icono Carrito"
-function showCartIcon (){
-    // El carrito solo se mostrará si la longitud del carrito es mayor a 0
-    if(cart.length > 0){
-        cartContainer.innerHTML = `<a><i class="fas fa-luggage-cart"></i>
-        <div class="cart-indicator">${cart.length}</div></a>`;
-        cartContainer.classList.add("fade-in-left");
-    }else{
-        cartContainer.classList.remove("fade-in-left");
-    }
-}
-
-showCartIcon();
-
-const modalCart = document.getElementById("modal-cart");
-cartContainer.onclick = ()=> modalCart.classList.toggle("hidden");
-
-
-
-
-console.log(cart);
+cartIconContainer.addEventListener("click", ()=>{
+    modalCart.classList.toggle("hidden");
+})

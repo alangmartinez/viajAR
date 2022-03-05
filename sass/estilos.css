@@ -228,7 +228,9 @@ main .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
 }
 @media screen and (min-width: 1280px) {
@@ -236,6 +238,7 @@ main .search-container {
     width: 50rem;
     margin: 5rem auto;
     margin-bottom: 7rem;
+    height: 5rem;
   }
 }
 main .search-container .search {
@@ -260,9 +263,19 @@ main .search-container .search:focus ~ .fa-search {
   opacity: 1;
   visibility: visible;
 }
+main .search-container .search::-moz-placeholder {
+  color: rgba(68, 68, 68, 0.9);
+}
+main .search-container .search:-ms-input-placeholder {
+  color: rgba(68, 68, 68, 0.9);
+}
+main .search-container .search::placeholder {
+  color: rgba(68, 68, 68, 0.9);
+}
 @media screen and (min-width: 1280px) {
   main .search-container .search {
     padding: 0rem 2rem;
+    font-size: 23px;
   }
 }
 main .search-container .fa-search {
@@ -581,9 +594,12 @@ main .modal-cart {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 45%;
-  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.85);
   border-radius: 10px;
   padding: 2.5rem 2.5rem;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
 }
 main .modal-cart .fa-times {
   color: #fff;
@@ -745,7 +761,9 @@ main .modal-cart .modal-cart-content .trip .fa-trash:hover {
 
 .cart-container {
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.85);
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
   position: fixed;
   bottom: 2.5rem;
