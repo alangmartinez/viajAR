@@ -613,7 +613,7 @@ main{
         .modal-cart-content{
             padding: 0 1rem;
             width: 100%;
-            margin-top: .5rem;
+            margin-top: 1.6rem;
 
             .trip{
                 display: grid;
@@ -627,6 +627,11 @@ main{
                     font-size: 18px;
                     font-family: 'PT Sans Narrow', sans-serif;
                     text-align: start;
+
+                    .fa-user{
+                        margin-right: .5rem;
+                        line-height: unset;
+                    }
                 }
                 .fa-trash{
                     margin: 0;
@@ -641,6 +646,15 @@ main{
                     }
                 }
             }
+        }
+        .total-price{
+            color: $color-white;
+            margin: 0;
+            padding: 0;
+            font-family: 'PT Sans Narrow', sans-serif;
+            font-size: 18px;
+            margin-top: 2.5rem;
+            
         }
     }
 }
@@ -902,11 +916,34 @@ main{
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 600ms all;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms all;
     @media screen and (min-width: 1280px){
         width: 30%;
         right: 2rem;
         left: auto;
+    }
+}
+.alert-danger{
+    position: fixed;
+    top: 1rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    box-shadow: $shadow-1;
+    z-index: 1000;
+    margin: auto;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms all;
+    @media screen and (min-width: 1280px){
+        width: 30%;
+        right: 2rem;
+        left: auto;
+    }
+
+    .fa-trash{
+        line-height: unset;
+        margin-right: .7rem;
     }
 }
 .fade-in-top{

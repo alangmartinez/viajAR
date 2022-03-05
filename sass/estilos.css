@@ -634,7 +634,7 @@ main .modal-cart hr {
 main .modal-cart .modal-cart-content {
   padding: 0 1rem;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 1.6rem;
 }
 main .modal-cart .modal-cart-content .trip {
   display: grid;
@@ -649,6 +649,10 @@ main .modal-cart .modal-cart-content .trip p {
   font-family: "PT Sans Narrow", sans-serif;
   text-align: start;
 }
+main .modal-cart .modal-cart-content .trip p .fa-user {
+  margin-right: 0.5rem;
+  line-height: unset;
+}
 main .modal-cart .modal-cart-content .trip .fa-trash {
   margin: 0;
   padding: 0;
@@ -659,6 +663,14 @@ main .modal-cart .modal-cart-content .trip .fa-trash {
 }
 main .modal-cart .modal-cart-content .trip .fa-trash:hover {
   color: #bb1732;
+}
+main .modal-cart .total-price {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 18px;
+  margin-top: 2.5rem;
 }
 
 .red {
@@ -922,7 +934,7 @@ main .modal-cart .modal-cart-content .trip .fa-trash:hover {
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 600ms all;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms all;
 }
 @media screen and (min-width: 1280px) {
   .alert-success {
@@ -930,6 +942,31 @@ main .modal-cart .modal-cart-content .trip .fa-trash:hover {
     right: 2rem;
     left: auto;
   }
+}
+
+.alert-danger {
+  position: fixed;
+  top: 1rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  margin: auto;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms all;
+}
+@media screen and (min-width: 1280px) {
+  .alert-danger {
+    width: 30%;
+    right: 2rem;
+    left: auto;
+  }
+}
+.alert-danger .fa-trash {
+  line-height: unset;
+  margin-right: 0.7rem;
 }
 
 .fade-in-top {
