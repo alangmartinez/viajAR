@@ -32,7 +32,6 @@ setInterval(showTime,1000);
 const API_KEY = "5431adfd8102483dbcc5b0d4649f6348";
 
 function getWeatherData () {
-
     try{
         // Get the geolocation of the current user navigator
         navigator.geolocation.getCurrentPosition(success => {
@@ -42,8 +41,7 @@ function getWeatherData () {
                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
                 .then(res => res.json())
                 .then(weatherData => {
-                    console.log(weatherData);
-                    
+
                     showWeather(weatherData);
                     });
             });
@@ -52,7 +50,9 @@ function getWeatherData () {
         alert("A problem has ocurred");
     }
 };
-getWeatherData();
+// Update weather ang geolocation 
+setInterval(getWeatherData, 1000);
+
 
 function showWeather(data) {
     let { temp, temp_max, temp_min, feels_like, humidity} = data.main;

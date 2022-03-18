@@ -255,7 +255,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.6rem;
   border-radius: 0 20px 20px 0;
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
   transform: translateX(-100%);
@@ -264,7 +264,7 @@ body {
 }
 .nav-desktop .list .list-item {
   width: 90%;
-  font-size: 28px;
+  font-size: 23px;
   margin: 0;
   margin-left: auto;
 }
@@ -281,9 +281,42 @@ body {
   line-height: unset;
   margin-right: 0.7rem;
 }
-.nav-desktop .weather-container {
+.nav-desktop .time-container {
   position: absolute;
   top: 1rem;
+  right: 16rem;
+  margin-right: 1rem;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5rem 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-desktop .time-container .time {
+  font-size: 18px;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
+}
+.nav-desktop .time-container .time .seconds {
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  margin-left: 4px;
+}
+.nav-desktop .time-container .am-pm {
+  font-size: 15px;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
+}
+.nav-desktop .weather-container {
+  position: absolute;
+  top: 1.3rem;
   right: 1.5rem;
 }
 .nav-desktop .weather-container .location {
@@ -316,7 +349,7 @@ body {
 main .search-container {
   width: 85%;
   height: 4.5rem;
-  margin: 6.5rem auto 2rem auto;
+  margin: 10.5rem auto 1.5rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -393,37 +426,6 @@ main .search-container .fa-search {
 main .main-container {
   display: flex;
   flex-direction: column;
-}
-main .main-container .time-container {
-  margin-left: 2rem;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
-}
-main .main-container .time-container .time {
-  font-size: 65px;
-  font-weight: 100;
-  font-family: "Poppins", sans-serif;
-}
-main .main-container .time-container .time .seconds {
-  font-size: 35px;
-  font-family: "Poppins", sans-serif;
-  margin-left: 4px;
-}
-main .main-container .time-container .am-pm {
-  font-size: 35px;
-  font-weight: 100;
-  font-family: "Poppins", sans-serif;
 }
 main .main-container .carousel-container {
   padding: 1.5rem;
