@@ -3,7 +3,6 @@ const submitBtn = document.querySelector(".submit-btn");
 const userName = document.querySelector(".user-name");
 const form = document.getElementById("form");
 const destination = document.getElementById("destination");
-const price = document.getElementById("price");
 
 const respuesta = document.createElement("p");
 respuesta.className = "respuesta"
@@ -21,9 +20,14 @@ submitBtn.addEventListener("click", (e)=> {
             respuesta.classList.add("green");
             respuesta.classList.remove("red");
             form.appendChild(respuesta);
+            // Swal.fire({
+            //     title: "Solicitud enviada correctamente !",
+            //     icon: "succcess",
+            //     confirmButtonText: "Ok!"
+            // });
     }
 });
-formCheck = ()=> {
+const formCheck = ()=> {
     let error = [];
     if(destination.value == ""){
         error[0] = true;

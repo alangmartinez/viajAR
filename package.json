@@ -1,0 +1,8 @@
+{
+    "name": "please-work",
+    "type": "module",
+    "dependencies": {
+        "sweetalert2": "^11.4.4",
+        "type": "module"
+    }
+}

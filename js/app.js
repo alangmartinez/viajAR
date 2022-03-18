@@ -1,7 +1,11 @@
+import { trips } from "./trips.js";
+
 const successfullAddedAlert = document.querySelector(".alert-success");
 const tripRomvedAlert = document.querySelector(".alert-danger");
 const cartIconContainer = document.createElement("div");
 const modalCart = document.getElementById("modal-cart");
+let p = document.createElement("p");
+let totalPrice = 0;
 
 
 // Cart is created form what we have storage in LS, if there is nothing storage:  cart = array[];
@@ -12,7 +16,7 @@ cart.forEach(element => {
 });
 
 // Trips are dynamically added to the DOM
-const tripsContainer = document.querySelector(".trips-container");
+export const tripsContainer = document.querySelector(".grid-container");
 
 showTrips(trips);
 
@@ -42,6 +46,8 @@ function addToCart(id) {
     if(repetido){
         repetido.count = repetido.count + 1;
         document.getElementById(`cantidad${repetido.id}`).innerHTML = `<i class="far fa-user"></i>Pasajes: ${repetido.count}`;
+        totalPrice = totalPrice + parseFloat(repetido.price);
+        p.textContent = `Precio Total: $${totalPrice},000`
     }else{
         const tripToAdd = trips.find(trip => trip.id == id);
         // Add a count value
@@ -69,10 +75,10 @@ function showCart(tripToAdd) {
     modalCartContent.appendChild(div);
 
     const modalCartFooter = document.querySelector(".modal-cart-footer");
-    let totalPrice = `${parseFloat(tripToAdd.price) * tripToAdd.count},000`;
-    let p = document.createElement("p");
+    totalPrice = totalPrice + parseFloat(tripToAdd.price);
+    // Add Total Price to the cart modal
     p.className = "total-price";
-    p.textContent = `Precio Total: $${totalPrice}`
+    p.textContent = `Precio Total: $${totalPrice},000`
     modalCartFooter.appendChild(p);
 
     const btnRemoveTrip = document.getElementById(`btnRemoveTrip${tripToAdd.id}`);
@@ -89,11 +95,13 @@ function showCart(tripToAdd) {
                 removedAlert();
             }else{
                 // Reduce the count in 1
-                console.log(tripToAdd.id);
                 tripToAdd.count = tripToAdd.count - 1;
                 document.getElementById(`cantidad${tripToAdd.id}`).innerHTML = `<i class="far fa-user"></i>Pasajes: ${tripToAdd.count}`;
                 removedAlert();
             }
+            // Update Total Price on remove trip
+            totalPrice = totalPrice - parseFloat(tripToAdd.price);
+            p.textContent = `Total Price: $${totalPrice},000`;
         })
     }
 

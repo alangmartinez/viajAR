@@ -1,21 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 footer {
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
-  height: 11rem;
+  height: 8rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   position: relative;
   border-radius: 25px 25px 0 0;
-  transition: ease-in-out all 450ms;
+}
+@media screen and (min-width: 1280px) {
+  footer {
+    height: 11rem;
+  }
 }
 footer .social-media {
   position: absolute;
-  top: 4.3rem;
-  right: 3.1rem;
+  top: 1.7rem;
+  right: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,12 +29,14 @@ footer .social-media {
 @media screen and (min-width: 1280px) {
   footer .social-media {
     top: 2.5rem;
+    right: 3.1rem;
   }
 }
 footer .social-media i {
   line-height: unset;
   color: #fff;
-  font-size: 35px;
+  font-size: 30px;
+  transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 @media screen and (min-width: 1280px) {
   footer .social-media i {
@@ -38,6 +45,7 @@ footer .social-media i {
 }
 footer .social-media i:hover {
   color: #FEBA0B;
+  transform: translateY(-7px);
 }
 footer p {
   text-align: center;
@@ -90,7 +98,7 @@ body {
   position: fixed;
   right: 0;
   top: 0;
-  padding: 0.5rem;
+  margin: 0.5rem;
   cursor: pointer;
   z-index: 200;
 }
@@ -129,14 +137,13 @@ body {
   justify-content: center;
   align-items: center;
   list-style: none;
-  height: 100vh;
   width: 80%;
   gap: 2.5rem;
   letter-spacing: 2px;
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  z-index: 100;
+  z-index: 180;
   transform: translateX(100%);
   opacity: 0;
   visibility: hidden;
@@ -206,47 +213,87 @@ body {
 
 .nav-desktop {
   display: none;
-  position: relative;
 }
 @media screen and (min-width: 1280px) {
   .nav-desktop {
     display: block;
   }
 }
-.nav-desktop .menu-desktop {
+.nav-desktop .btn-menu-container {
+  height: 4.5rem;
+  width: 4.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 1rem;
+  left: 1.5rem;
+  z-index: 250;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  margin: 0;
-  padding: 1rem 3rem;
-  gap: 3rem;
-  width: 100%;
+  border-radius: 50%;
+}
+.nav-desktop .btn-menu-container .fa-bars {
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
+.nav-desktop .hide-background {
+  background: none;
+}
+.nav-desktop .list {
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 17rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1) 600ms all;
 }
-.nav-desktop .menu-desktop .list-item {
-  font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.8rem;
-  text-decoration: none;
+.nav-desktop .list .list-item {
+  width: 90%;
+  font-size: 28px;
   margin: 0;
-  padding: 0;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-  transition: transform ease-out 150ms;
+  margin-left: auto;
 }
-.nav-desktop .menu-desktop .list-item:hover {
-  transform: scale(1.1);
-}
-.nav-desktop .menu-desktop .list-item a {
+.nav-desktop .list .list-item a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 2px 4px 5px #000000;
-  margin: 0;
-  font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #fff;
+  line-height: unset;
+  text-transform: uppercase;
 }
-.nav-desktop .menu-desktop .list-item a i {
-  margin-right: 0.5rem;
-  font-size: 1.8rem;
+.nav-desktop .list .list-item a:hover {
+  color: #1e1e1e;
+}
+.nav-desktop .list .list-item a i {
+  line-height: unset;
+  margin-right: 0.7rem;
+}
+.nav-desktop .weather-container {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+.nav-desktop .weather-container .location {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 1000;
+  cursor: pointer;
+}
+.nav-desktop .weather-container .location:hover {
+  color: #fff;
 }
 
 .title {
@@ -347,6 +394,37 @@ main .main-container {
   display: flex;
   flex-direction: column;
 }
+main .main-container .time-container {
+  margin-left: 2rem;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+}
+main .main-container .time-container .time {
+  font-size: 65px;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
+}
+main .main-container .time-container .time .seconds {
+  font-size: 35px;
+  font-family: "Poppins", sans-serif;
+  margin-left: 4px;
+}
+main .main-container .time-container .am-pm {
+  font-size: 35px;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
+}
 main .main-container .carousel-container {
   padding: 1.5rem;
   margin: auto;
@@ -418,43 +496,78 @@ main .main-container ._havana {
 main .main-container ._rio_janeiro {
   background-image: url(../assets/img/rio-janeiro-desktop.jpg);
 }
-main .main-container .trip {
+main .main-container ._madrid {
+  background-image: url(../assets/img/madrid-desktop.jpg);
+}
+main .main-container ._paris {
+  background-image: url(../assets/img/paris-desktop.jpg);
+}
+main .main-container ._new-york {
+  background-image: url(../assets/img/new-york-desktop.jpg);
+}
+main .main-container ._dubai {
+  background-image: url(../assets/img/dubai-desktop.jpg);
+}
+main .main-container ._roma {
+  background-image: url(../assets/img/roma-desktop.jpg);
+}
+main .main-container .trips-container {
+  padding: 1.5rem;
+}
+main .main-container .trips-container .travels-title {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+main .main-container .trips-container hr {
+  opacity: 1;
+  height: 2px;
+  margin-bottom: 2rem;
+}
+main .main-container .trips-container .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+main .main-container .trips-container .grid-container .trip {
   display: none;
   width: 100%;
-  height: 800px;
+  height: 550px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 10px;
   position: relative;
 }
 @media screen and (min-width: 1280px) {
-  main .main-container .trip {
+  main .main-container .trips-container .grid-container .trip {
     display: block;
   }
 }
-main .main-container .trip .trip-content {
+main .main-container .trips-container .grid-container .trip .trip-content {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
 }
-main .main-container .trip .trip-content_title {
+main .main-container .trips-container .grid-container .trip .trip-content_title {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 70px;
+  font-size: 50px;
   margin-top: 5rem;
-  margin-left: 5rem;
+  margin-left: 3rem;
   margin-bottom: 1rem;
   text-shadow: 2px 4px 5px #000000;
 }
-main .main-container .trip .trip-content_price {
-  font-size: 70px;
+main .main-container .trips-container .grid-container .trip .trip-content_price {
+  font-size: 50px;
   text-shadow: 2px 4px 5px #000000;
   margin-left: 13rem;
   color: #fff;
 }
-main .main-container .trip button {
+main .main-container .trips-container .grid-container .trip button {
   background: #FEBA0B;
   padding: 1rem 40px;
   cursor: pointer;
@@ -467,11 +580,11 @@ main .main-container .trip button {
   width: 12rem;
   text-transform: uppercase;
   position: absolute;
-  bottom: 7rem;
-  right: 5rem;
+  bottom: 3.7rem;
+  right: 3.5rem;
   transition: ease 150ms all;
 }
-main .main-container .trip button:hover {
+main .main-container .trips-container .grid-container .trip button:hover {
   color: #FEBA0B;
   background-color: #fff;
   transform: scale(1.05);
@@ -669,13 +782,19 @@ main .modal-cart {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 45%;
+  width: 80%;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.85);
   border-radius: 10px;
   padding: 2.5rem 2.5rem;
   box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.75);
+  z-index: 150;
+}
+@media screen and (min-width: 1280px) {
+  main .modal-cart {
+    width: 45%;
+  }
 }
 main .modal-cart .fa-times {
   color: #fff;

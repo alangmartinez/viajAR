@@ -1,15 +1,27 @@
+import { trips } from "./trips.js";
+import { tripsContainer } from "./app.js";
+
 const searchInput = document.getElementById("searchInput");
-const searchResult = document.getElementById("searchResult");
+const searchIcon = document.querySelector(".fa-search");
 
+searchIcon.addEventListener("click", ()=> {
+    let search = searchInput.value.toLowerCase();
+    let searchResult = trips.filter( travel => {
+        travel.destination.toLowerCase().includes(search);
+    });
 
-// searchInput.addEventListener("keyup", ()=>{
-//     if(searchInput.value.length > 0){
-//         trips.forEach( trip => {
-//             let tripDestination = trip.destination;
-//             if(tripDestination.toLowerCase().includes(searchInput.value.toLowerCase())){
-//                 searchResult.innerHTML = "";
-//                 searchResult.innerHTML += `<p>${tripDestination} ${trip.price}</p>`;
-//             }
-//         })
-//     }
-// })
+    console.log("Esta funcionando");
+    console.log(searchResult);
+
+    searchResult.forEach( travel => {
+        let div = document.createElement("div");
+            div.className = `trip ${travel.img}`;
+            div.innerHTML = `
+            <div class="trip-content">
+            <h2 class="trip-content_title">${travel.destination}</h2>
+            <p class="trip-content_price">$${travel.price}</p>
+            </div>
+            <button id="btnAddToCart${travel.id}">Agregar !</button>`;
+            tripsContainer.appendChild(div);
+    })
+})

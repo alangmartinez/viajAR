@@ -13,3 +13,15 @@ btnMenuTimes.addEventListener("click", ()=> {
     btnMenuBars.classList.remove("hidden");
     slideMenu.classList.remove("visible");
 })
+
+// Menu Desktop
+
+const btnMenuDesktop = document.getElementById("btn-menu-desktop");
+
+btnMenuDesktop.addEventListener("click", ()=> {
+    const menuDesktop = document.getElementById("menu-desktop");
+    const btnMenuContainer = document.querySelector(".btn-menu-container");
+
+    menuDesktop.classList.toggle("visible");
+    btnMenuContainer.classList.toggle("hide-background");
+})

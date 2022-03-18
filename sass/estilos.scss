@@ -1,5 +1,6 @@
 @import "_variables";
 @import "_footer";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
 
 *{
     margin: 0;
@@ -28,7 +29,7 @@ body{
         position: fixed;
         right: 0;
         top: 0;
-        padding: .5rem;
+        margin: .5rem;
         cursor: pointer;
         z-index: 200;
         @media screen and (min-width: 1280px) {
@@ -67,13 +68,12 @@ body{
         justify-content: center;
         align-items: center;
         list-style: none;
-        height: 100vh;
         width: 80%;
         gap: 2.5rem;
         letter-spacing: 2px;
         background-color: rgba($color: #000000, $alpha: .85);
         backdrop-filter: blur(10px);
-        z-index: 100;
+        z-index: 180;
         transform: translateX(100%);
         opacity: 0;
         visibility: hidden;
@@ -145,46 +145,89 @@ body{
 }
 .nav-desktop{
     display: none;
-    position: relative;
     @media screen and (min-width: 1280px){
         display: block;
     }
-    .menu-desktop{
+
+    .btn-menu-container{
+        height: 4.5rem;
+        width: 4.5rem;
+        background-color: rgba($color: #000000, $alpha: .8);
+        position: fixed;
+        top: 1rem;
+        left: 1.5rem;
+        z-index: 250;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
-        margin: 0;
-        padding: 1rem 3rem;
-        gap: 3rem;
-        width: 100%;
+        border-radius: 50%;
+
+        .fa-bars{
+            color: $color-white;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    }
+    .hide-background{
+        background: none;
+    }
+    .list{
+        position: fixed;
+        z-index: 200;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        height: 100vh;
+        width: 17rem;
+        background-color: rgba($color: #000000, $alpha: .75);
+        backdrop-filter: blur(10px);
         list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        border-radius: 0 20px 20px 0;
+        box-shadow: $shadow-1;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: cubic-bezier(0.175, 0.885, 0.32, 1) 600ms all;
 
         .list-item{
-            font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-            font-size: 1.8rem;
-            text-decoration: none;
+            width: 90%;
+            font-size: 28px;
             margin: 0;
-            padding: 0;
-            padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
-            transition: transform ease-out 150ms;
-
-            &:hover{
-                transform: scale(1.1);
-            }
+            margin-left: auto;
 
             a{
                 text-decoration: none;
-                color: rgba($color: #fff, $alpha: .92);
-                text-shadow: $txt-shadow;
-                margin: 0;
-                font-family: cera-round-pro, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+                color: $color-white;
+                line-height: unset;
+                text-transform: uppercase;
 
-                i{
-                    margin-right: .5rem;
-                    font-size: 1.8rem;
+                &:hover{
+                    color: rgb(30, 30, 30);
                 }
+    
+                i{
+                    line-height: unset;
+                    margin-right: .7rem;
+                }
+            }
+        }
+    }
+    .weather-container{
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        
+        .location{
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 1000;
+            cursor: pointer;
+
+            &:hover{
+                color: $color-white;
             }
         }
     }
@@ -279,7 +322,37 @@ main{
     .main-container{
         display: flex;
         flex-direction: column;
-    
+        
+        .time-container{
+            margin-left: 2rem;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: $border-radius;
+            width: fit-content;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: $shadow-1;
+            
+            .time{
+                font-size: 65px;
+                font-weight: 100;
+                font-family: 'Poppins', sans-serif;
+
+                .seconds{
+                    font-size: 35px;
+                    font-family: 'Poppins', sans-serif;
+                    margin-left: 4px;
+                }
+            }
+            .am-pm{
+                font-size: 35px;
+                font-weight: 100;
+                font-family: 'Poppins', sans-serif;
+            }
+        }
         .carousel-container{
             padding: 1.5rem;
             margin: auto;
@@ -351,65 +424,102 @@ main{
         ._rio_janeiro{
             background-image: url(../assets/img/rio-janeiro-desktop.jpg);
         }
-        .trip{
-            display: none;
-            width: 100%;
-            height: 800px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-            @media screen and (min-width: 1280px) {
-                display: block;
-            }
-    
-            .trip-content{
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                align-items: flex-start;
-    
-                &_title{
-                    color: $color-white;
-                    text-transform: uppercase;
-                    letter-spacing: 2px;
-                    font-size: 70px;
-                    margin-top: 5rem;
-                    margin-left: 5rem;
-                    margin-bottom: 1rem;
-                    text-shadow: $txt-shadow;
-                }
-                &_price{
-                    font-size: 70px;
-                    text-shadow: $txt-shadow;
-                    margin-left: 13rem;
-                    color: $color-white;
-                }
-            }
-            button{
-                background: #FEBA0B;
-                padding: 1rem 40px;
-                cursor: pointer;
+        ._madrid{
+            background-image: url(../assets/img/madrid-desktop.jpg);
+        }
+        ._paris{
+            background-image: url(../assets/img/paris-desktop.jpg);
+        }
+        ._new-york{
+            background-image: url(../assets/img/new-york-desktop.jpg);
+        }
+        ._dubai{
+            background-image: url(../assets/img/dubai-desktop.jpg);
+        }
+        ._roma{
+            background-image: url(../assets/img/roma-desktop.jpg);
+        }
+.trips-container{
+    padding: 1.5rem;
+
+    .travels-title{
+        font-family: "Fjalla One", sans-serif;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+    hr{
+        opacity: 1;
+        height: 2px;
+        margin-bottom: 2rem;
+    }
+    .grid-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    .trip{
+        display: none;
+        width: 100%;
+        height: 550px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: $border-radius;
+        position: relative;
+        @media screen and (min-width: 1280px) {
+            display: block;
+        }
+
+        .trip-content{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+
+            &_title{
                 color: $color-white;
-                border-radius: 20px;
-                box-shadow: $shadow-1;
-                font-weight: 300;
-                border: none;
-                font-size: 1.2rem;
-                width: 12rem;
                 text-transform: uppercase;
-                position: absolute;
-                bottom: 7rem;
-                right: 5rem;
-                transition: ease 150ms all;
-    
-                &:hover{
-                    color: #FEBA0B;
-                    background-color: $color-white;
-                    transform: scale(1.05);
-                }
+                letter-spacing: 2px;
+                font-size: 50px;
+                margin-top: 5rem;
+                margin-left: 3rem;
+                margin-bottom: 1rem;
+                text-shadow: $txt-shadow;
+            }
+            &_price{
+                font-size: 50px;
+                text-shadow: $txt-shadow;
+                margin-left: 13rem;
+                color: $color-white;
             }
         }
+        button{
+            background: #FEBA0B;
+            padding: 1rem 40px;
+            cursor: pointer;
+            color: $color-white;
+            border-radius: 20px;
+            box-shadow: $shadow-1;
+            font-weight: 300;
+            border: none;
+            font-size: 1.2rem;
+            width: 12rem;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 3.7rem;
+            right: 3.5rem;
+            transition: ease 150ms all;
+
+            &:hover{
+                color: #FEBA0B;
+                background-color: $color-white;
+                transform: scale(1.05);
+            }
+        }
+    }
+    }
+}
         .form-container{
             padding: 1.5rem;
             height: 100%;
@@ -576,13 +686,16 @@ main{
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 45%;
-        // backdrop-filter: blur(5px);
+        width: 80%;
         backdrop-filter: blur(5px);
         background-color: rgba(0, 0, 0, .85);
         border-radius: $border-radius;
         padding: 2.5rem 2.5rem;
         box-shadow: $shadow-1;
+        z-index: 150;
+        @media screen and (min-width:1280px) {
+            width: 45%;
+        }
 
         .fa-times{
             color: $color-white;
